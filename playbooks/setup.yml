@@ -7,34 +7,34 @@
       ansible.builtin.set_fact:
         kafka_server_id: "{{ ansible_play_hosts_all.index(inventory_hostname) + 1 }}"
 
-    # - name: Add Confluent Debian Key
-    #   ansible.builtin.apt_key:
-    #     url: https://packages.confluent.io/deb/7.5/archive.key
+    - name: Add Confluent Debian Key
+      ansible.builtin.apt_key:
+        url: https://packages.confluent.io/deb/7.5/archive.key
 
-    # - name: Add Confluent Debian Repo
-    #   ansible.builtin.apt_repository:
-    #     repo: deb [arch=amd64] https://packages.confluent.io/deb/7.5 stable main
+    - name: Add Confluent Debian Repo
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] https://packages.confluent.io/deb/7.5 stable main
 
-    # - name: Install Confluent Platform
-    #   ansible.builtin.apt:
-    #     name:
-    #       - confluent-kafka
-    #       - default-jdk-headless
+    - name: Install Confluent Platform
+      ansible.builtin.apt:
+        name:
+          - confluent-kafka
+          - default-jdk-headless
 
-    # - name: Create /usr/local/lib/systemd/system
-    #   ansible.builtin.file:
-    #     dest: /usr/local/lib/systemd/system
-    #     state: directory
+    - name: Create /usr/local/lib/systemd/system
+      ansible.builtin.file:
+        dest: /usr/local/lib/systemd/system
+        state: directory
 
-    # - name: Work around https://github.com/confluentinc/schema-registry/pull/917
-    #   ansible.builtin.copy:
-    #     content: |
-    #       [Unit]
-    #       Description=Apache Kafka - Zookeeper - target
-    #       Requires=confluent-zookeeper.service
-    #       [Install]
-    #       WantedBy=multi-user.target
-    #     dest: /usr/local/lib/systemd/system/confluent-zookeeper.target
+    - name: Work around https://github.com/confluentinc/schema-registry/pull/917
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Apache Kafka - Zookeeper - target
+          Requires=confluent-zookeeper.service
+          [Install]
+          WantedBy=multi-user.target
+        dest: /usr/local/lib/systemd/system/confluent-zookeeper.target
 
     - name: Configure Zookeeper
       ansible.builtin.copy:
