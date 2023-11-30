@@ -1,4 +1,4 @@
-- name: Install software
+- name: Install software on brokers
   hosts: brokers
   become: true
 
