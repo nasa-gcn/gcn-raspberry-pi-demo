@@ -1,0 +1,19 @@
+- name: Install client software
+  hosts: clients
+
+  tasks:
+    - name: Install virtualenv
+      become: true
+      ansible.builtin.apt:
+        name:
+          - python3-virtualenv
+
+    - name: Copy requirements file
+      ansible.builtin.copy:
+        src: ../requirements.txt
+        dest: requirements.txt
+
+    - name: Install Python packages
+      ansible.builtin.pip:
+        virtualenv: ~/env
+        requirements: requirements.txt
