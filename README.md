@@ -37,6 +37,7 @@ On the Raspberry Pi:
     a. Write the following to /etc/network/interfaces.d/eth0:
 
         auto eth0
+        allow-hotplug eth0
         iface eth0 inet static
             address 169.254.42.N/16
 
