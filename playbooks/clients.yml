@@ -16,6 +16,7 @@
     - name: Install Python packages
       ansible.builtin.pip:
         virtualenv: ~/env
+        virtualenv_site_packages: true
         requirements: ~/requirements.txt
 
     - name: Copy script
