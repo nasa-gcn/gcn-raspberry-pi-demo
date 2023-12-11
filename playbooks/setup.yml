@@ -6,6 +6,7 @@
     - name: Get Kafka server ID
       ansible.builtin.set_fact:
         kafka_server_id: "{{ ansible_play_hosts_all.index(inventory_hostname) + 1 }}"
+        bootstrap_servers: "{% for host in ansible_play_hosts_all %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
 
     - name: Add Confluent Debian Key
       ansible.builtin.apt_key:
@@ -90,4 +91,11 @@
       ansible.builtin.systemd_service:
         name: confluent-kafka.service
         enabled: true
-        state: restarted
+        state: started
+
+    - name: Create Kafka topics
+      ansible.builtin.shell: kafka-topics --bootstrap-server {{bootstrap_servers}} --create --if-not-exists --topic {{item}}
+      loop:
+        - red
+        - green
+        - blue
