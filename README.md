@@ -39,11 +39,11 @@ On the Raspberry Pi:
         auto eth0
         allow-hotplug eth0
         iface eth0 inet static
-            address 169.254.42.N/16
+            address 10.0.42.N/16
 
     b. Write the following to /etc/ssh/sshd_config.d/linklocal.conf:
 
-        ListenAddress 169.254.42.N
+        ListenAddress 10.0.42.N
 
     c. Run the following:
 
