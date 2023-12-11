@@ -2,10 +2,11 @@
 import threading
 from typing import Annotated, Literal
 from uuid import uuid4
+import signal
 
 import confluent_kafka
-import curtsies
 from curtsies.fmtfuncs import bold, fmtstr
+import gpiozero
 import randomname
 import typer
 
@@ -42,16 +43,20 @@ def main(
                     style=topic)
                 print(text)
 
-    threading.Thread(target=consume).start()
+    threading.Thread(target=consume, daemon=True).start()
 
-    with curtsies.Input() as keypresses:
-        for _ in keypresses:
-            value = randomname.get_name()
-            text = fmtstr(
-                bold(f'[{color}]') + ' produced "' + value + '"',
-                style=color)
-            producer.produce(color, value)
-            print(text)
+    def produce():
+        value = randomname.get_name()
+        text = fmtstr(
+            bold(f'[{color}]') + ' produced "' + value + '"',
+            style=color)
+        producer.produce(color, value)
+        print(text)
+
+    button = gpiozero.Button(21, bounce_time=0.0001, hold_time=0.5, hold_repeat=True)
+    button.when_activated = button.when_held = produce
+
+    signal.pause()
 
 
 if __name__ == "__main__":
