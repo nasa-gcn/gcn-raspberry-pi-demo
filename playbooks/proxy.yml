@@ -1,0 +1,21 @@
+- name: Set up proxy through lab gateway system
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Set up HTTP proxy
+      ansible.builtin.copy:
+        content: |
+          export http_proxy="http://10.0.0.1:3128/"
+          export https_proxy="${http_proxy}"
+          export HTTP_PROXY="${http_proxy}"
+          export HTTPS_PROXY="${http_proxy}"
+          export no_proxy="127.0.0.1,localhost"
+          export NO_PROXY="${no_proxy}"
+        dest: /etc/profile.d/http_proxy.sh
+
+    - name: Set up DNS
+      ansible.builtin.copy:
+        content: |
+          nameserver 10.0.0.1
+        dest: /etc/resolv.conf
