@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import threading
-from typing import Annotated, Literal
+from typing import Annotated
 from uuid import uuid4
 import signal
 
