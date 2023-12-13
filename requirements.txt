@@ -3,4 +3,5 @@ curtsies
 gpiozero
 ipython
 randomname
+rich
 typer
