@@ -42,16 +42,16 @@ def main(
             for message in consumer.consume():
                 topic = message.topic()
                 console.print(
-                    f'[{topic} bold]RECV[not bold] {message.error() or message.value().decode()}'
+                    f"[{topic} bold]RECV[not bold] {message.error() or message.value().decode()}"
                 )
 
     threading.Thread(target=consume, daemon=True).start()
 
     def produce():
-        value = '-' * 20
+        value = "-" * 20
         while len(value) > 10:
             value = randomname.get_name()
-        console.print(f'[{color} bold]SEND[not bold] {value}')
+        console.print(f"[{color} bold]SEND[not bold] {value}")
         producer.produce(color, value)
 
     button = gpiozero.Button(21, bounce_time=0.001, hold_time=0.5, hold_repeat=True)
