@@ -6,7 +6,6 @@ import signal
 
 import confluent_kafka
 from rich.console import Console
-from rich.text import Text
 import gpiozero
 import randomname
 import typer
