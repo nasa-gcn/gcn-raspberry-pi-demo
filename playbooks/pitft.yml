@@ -1,5 +1,5 @@
 - name: Set up PiTFT displays
-  hosts: pitfts
+  hosts: all
   become: true
 
   tasks:
