@@ -1,0 +1,24 @@
+- name: Set up PiTFT displays
+  hosts: pitfts
+  become: true
+
+  tasks:
+    - name: Set up /boot/config.txt
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: "{{item}}"
+        dest: /boot/config.txt
+      loop:
+        - dtoverlay=minipitft13,fps=60
+
+    - name: Set up /boot/cmdline.txt
+      ansible.builtin.replace:
+        regexp: " rootwait (.+| *)quiet "
+        replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} fbcon:font=TER16x32 quiet "
+        dest: /boot/cmdline.txt
+
+    - name: Boot to framebuffer console
+      ansible.builtin.shell: raspi-config nonint do_boot_behaviour B2
+
+    - name: Reboot
+      ansible.builtin.reboot:

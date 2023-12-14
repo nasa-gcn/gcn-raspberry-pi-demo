@@ -5,6 +5,14 @@ pis:
 brokers:
   hosts:
     10.0.42.[1:3]:
+      pitft_rotate: 0
 clients:
   hosts:
     10.0.42.[4:6]:
+      pitft_rotate: 2
+# Hosts on which to set up PiTFTs as Linux framebuffer consoles.
+# Leaving #6 unconfigured for the moment so that Dakota can continue
+# experimenting with the CircuitPython method.
+pitfts:
+  hosts:
+    10.0.42.[1:5]:
