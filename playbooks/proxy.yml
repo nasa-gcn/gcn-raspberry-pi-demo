@@ -35,3 +35,15 @@
         content: |
           nameserver 10.0.0.1
         dest: /etc/resolv.conf
+
+    - name: Create /etc/systemd/timesyncd.conf.d directory
+      ansible.builtin.file:
+        path: /etc/systemd/timesyncd.conf.d
+        state: directory
+
+    - name: Set up NTP
+      ansible.builtin.copy:
+        content: |
+          [Time]
+          NTP=10.0.0.1
+        dest: /etc/systemd/timesyncd.conf.d/proxy.conf
