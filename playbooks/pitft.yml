@@ -29,6 +29,3 @@
 
     - name: Boot to framebuffer console
       ansible.builtin.shell: raspi-config nonint do_boot_behaviour B2
-
-    - name: Reboot
-      ansible.builtin.reboot:
