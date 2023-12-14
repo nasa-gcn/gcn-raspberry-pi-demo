@@ -8,13 +8,14 @@ from rich.text import Text
 
 
 topics = ["red", "green", "blue"]
-symbols = "✓✗?"
+symbols = "?NY"
 
 table = Table(
     width=15,
     title="Brokers",
     title_justify="right",
     caption="insync replicas",
+    caption_style='gray italic',
     title_style="bold",
     show_edge=False,
     pad_edge=False,
