@@ -5,7 +5,7 @@
     - name: Copy script
       ansible.builtin.copy:
         src: ../client.py
-        dest: demo.py
+        dest: ~/demo.py
 
 - name: Install broker display script
   hosts: brokers
@@ -14,7 +14,7 @@
     - name: Copy script
       ansible.builtin.copy:
         src: ../admin_mockup.py
-        dest: demo.py
+        dest: ~/demo.py
 
 - name: Install Python dependencies, set to auto-run
   hosts: all
