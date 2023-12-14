@@ -1,7 +1,29 @@
-- name: Install client software
+- name: Install client display script
   hosts: clients
+  tasks:
+
+    - name: Copy script
+      ansible.builtin.copy:
+        src: ../client.py
+        dest: demo.py
+
+- name: Install broker display script
+  hosts: brokers
+  tasks:
+
+    - name: Copy script
+      ansible.builtin.copy:
+        src: ../admin_mockup.py
+        dest: demo.py
+
+- name: Install Python dependencies, set to auto-run
+  hosts: all
 
   tasks:
+    - name: Get Kafka server IDs
+      ansible.builtin.set_fact:
+        bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
+
     - name: Install virtualenv
       become: true
       ansible.builtin.apt:
@@ -19,7 +41,12 @@
         virtualenv_site_packages: true
         requirements: ~/requirements.txt
 
-    - name: Copy script
-      ansible.builtin.copy:
-        src: ../client.py
-        dest: client.py
+    - name: Auto-run demo program on /dev/tty1
+      ansible.builtin.lineinfile:
+        line: 'if [ $(tty) = /dev/tty1 ]; then ~/env/bin/python ~/demo.py --bootstrap-server {{bootstrap_servers}} {% if kafka_topic is defined %}--color {{kafka_topic}}{% endif %}; fi  # launch GCN demo'
+        search_string: '# launch GCN demo'
+        insertafter: EOF
+        dest: /home/gcndemo/.profile
+
+    - name: Restart demo program
+      ansible.builtin.shell: pkill -HUP -t tty1
