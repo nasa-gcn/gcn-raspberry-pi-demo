@@ -30,7 +30,6 @@ def main(
         'log_level': 0,
     })
     topics = list(COLORS - {color})
-    print('Subscribing to ', topics)
     consumer.subscribe(list(COLORS - {color}))
 
     def consume():
