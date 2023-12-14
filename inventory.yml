@@ -10,3 +10,9 @@ clients:
   hosts:
     10.0.42.[4:6]:
       pitft_rotate: 2
+    "10.0.42.4":
+      kafka_topic: red
+    "10.0.42.5":
+      kafka_topic: green
+    "10.0.42.6":
+      kafka_topic: blue
