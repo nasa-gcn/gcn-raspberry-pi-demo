@@ -6,10 +6,8 @@
     - name: Set up /boot/config.txt
       ansible.builtin.lineinfile:
         insertafter: \[all\]
-        line: "{{item}}"
+        line: dtoverlay=minipitft13,fps=60
         dest: /boot/config.txt
-      loop:
-        - dtoverlay=minipitft13,fps=60
 
     - name: Set up /boot/cmdline.txt
       ansible.builtin.replace:
