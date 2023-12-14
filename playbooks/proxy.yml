@@ -3,6 +3,15 @@
   become: true
 
   tasks:
+    - name: Disable WiFi and Bluetooth
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: "{{item}}"
+        dest: /boot/config.txt
+      loop:
+        - dtoverlay=disable-bt
+        - dtoverlay=disable-wifi
+
     - name: Set up HTTP_PROXY/HTTPS_PROXY environment variables
       ansible.builtin.lineinfile:
         line: "{{item}}=http://10.0.0.1:3128/"
