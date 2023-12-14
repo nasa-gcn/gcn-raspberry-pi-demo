@@ -14,8 +14,20 @@
     - name: Set up /boot/cmdline.txt
       ansible.builtin.replace:
         regexp: " rootwait (.+| *)quiet "
-        replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} fbcon:font=TER16x32 quiet "
+        replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet "
         dest: /boot/cmdline.txt
+
+    - name: Set console font face
+      ansible.builtin.replace:
+        regexp: FONTFACE=".*"
+        replace: FONTFACE="Terminus"
+        dest: /etc/default/console-setup
+
+    - name: Set console font size
+      ansible.builtin.replace:
+        regexp: FONTSIZE=".*"
+        replace: FONTSIZE="16x32"
+        dest: /etc/default/console-setup
 
     - name: Boot to framebuffer console
       ansible.builtin.shell: raspi-config nonint do_boot_behaviour B2
