@@ -23,7 +23,32 @@
   tasks:
     - name: Get Kafka server IDs
       ansible.builtin.set_fact:
-        bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
+        bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+    - name: Add Debian testing apt repo
+      ansible.builtin.apt_repository:
+        repo: deb     http://ftp.de.debian.org/debian/    testing main contrib non-free
+      become: true
+
+    - name: Set apt priorities
+      ansible.builtin.copy:
+        content: |
+          Package: *
+          Pin: release a=stable
+          Pin-Priority: 900
+
+          Package: *
+          Pin: release o=Debian
+          Pin-Priority: -10
+        dest: /etc/apt/preferences.d/confluent-kafka-python.pref
+      become: true
+
+    - name: Install apt dependencies from Debian testing
+      ansible.builtin.apt:
+        default_release: testing
+        name:
+          - librdkafka-dev
+      become: true
 
     - name: Install apt dependencies
       ansible.builtin.apt:
