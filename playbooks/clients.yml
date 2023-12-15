@@ -6,15 +6,16 @@
       ansible.builtin.copy:
         src: ../client.py
         dest: ~/demo.py
+        mode: preserve
 
 - name: Install broker display script
   hosts: brokers
   tasks:
-
     - name: Copy script
       ansible.builtin.copy:
-        src: ../admin_mockup.py
+        src: ../admin.py
         dest: ~/demo.py
+        mode: preserve
 
 - name: Install Python dependencies, set to auto-run
   hosts: all
@@ -24,11 +25,16 @@
       ansible.builtin.set_fact:
         bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
 
-    - name: Install virtualenv
-      become: true
+    - name: Install apt dependencies
       ansible.builtin.apt:
         name:
+          - ipython3
+          - python3-confluent-kafka
+          - python3-gpiozero
+          - python3-rich
+          - python3-typer
           - python3-virtualenv
+      become: true
 
     - name: Copy requirements file
       ansible.builtin.copy:
