@@ -58,7 +58,7 @@
           listeners=PLAINTEXT://{{ inventory_hostname }}:9092
           log.dirs=/var/lib/kafka
           default.replication.factor={{ ansible_play_hosts_all|length }}
-          min.insync.replicas=2
+          min.insync.replicas=1
           replica.lag.time.max.ms = 2000
           replica.socket.timeout.ms = 1000
           request.timeout.ms = 1000
