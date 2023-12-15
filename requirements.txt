@@ -1,5 +1,4 @@
 confluent-kafka
-curtsies
 gpiozero
 ipython
 randomname
