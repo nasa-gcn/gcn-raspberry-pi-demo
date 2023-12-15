@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from typing import Annotated
-
 import confluent_kafka.admin
 from rich.table import box, Table
 from rich.live import Live
@@ -12,7 +10,7 @@ symbols = "?NY"
 
 
 def main(
-        bootstrap_server: Annotated[str, typer.Option()],
+        bootstrap_server: str,
 ):
     admin = confluent_kafka.admin.AdminClient({
         'bootstrap.servers': bootstrap_server,

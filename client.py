@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import threading
-from typing import Annotated
 from uuid import uuid4
 import signal
 
@@ -14,8 +13,8 @@ COLORS = {"red", "green", "blue"}
 
 
 def main(
-    bootstrap_server: Annotated[str, typer.Option()],
-    color: Annotated[str, typer.Option()],
+    bootstrap_server: str,
+    color: str,
 ):
     console = Console()
     consumer = confluent_kafka.Consumer(
