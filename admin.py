@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import confluent_kafka
 import confluent_kafka.admin
 from rich.table import box, Table
 from rich.live import Live
@@ -15,7 +16,7 @@ def main(
     admin = confluent_kafka.admin.AdminClient({
         'bootstrap.servers': bootstrap_server,
         'socket.timeout.ms': 1000,
-        # 'log_level': 0,
+        'log_level': 0,
     })
 
     topic_collection = confluent_kafka.TopicCollection(COLORS)
@@ -42,7 +43,7 @@ def main(
 
     with Live(table):
         while True:
-            for topic, row, future in zip(COLORS, rows, admin.describe_topics(topic_collection, request_timeout=0.5).values()):
+            for topic, row, future in zip(COLORS, rows, admin.describe_topics(topic_collection, request_timeout=0.25).values()):
                 try:
                     isr = {isr.id for isr in future.result().partitions[0].isr}
                 except confluent_kafka.KafkaException:
