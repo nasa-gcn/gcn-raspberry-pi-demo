@@ -26,9 +26,9 @@ def main(
 
     def stats(data):
         for broker in json.loads(data)['brokers'].values():
-            if broker['source'] != 'configured':
-                continue
             nodeid = broker['nodeid']
+            if broker['source'] != 'configured' or nodeid < 1:
+                continue
             old_state = states.get(nodeid, False)
             new_state = broker['state'] == 'UP'
             if old_state != new_state:
