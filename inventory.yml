@@ -16,3 +16,6 @@ clients:
       kafka_topic: green
     "10.0.42.6":
       kafka_topic: blue
+ntpd:
+  hosts:
+    "10.0.42.1":
