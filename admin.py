@@ -43,7 +43,7 @@ def main(
 
     with Live(table):
         while True:
-            for topic, row, future in zip(COLORS, rows, admin.describe_topics(topic_collection, request_timeout=0.25).values()):
+            for topic, row, future in zip(COLORS, rows, admin.describe_topics(topic_collection).values()):
                 try:
                     isr = {isr.id for isr in future.result().partitions[0].isr}
                 except confluent_kafka.KafkaException:
