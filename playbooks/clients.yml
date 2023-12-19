@@ -74,7 +74,7 @@
 
     - name: Auto-run demo program on /dev/tty1
       ansible.builtin.lineinfile:
-        line: 'if [ $(tty) = /dev/tty1 ]; then ~/env/bin/python ~/demo.py {{bootstrap_servers}} {% if kafka_topic is defined %}{{kafka_topic}}{% endif %}; fi  # launch GCN demo'
+        line: 'if [ $(tty) = /dev/tty1 ]; then exec ~/env/bin/python ~/demo.py {{bootstrap_servers}} {% if kafka_topic is defined %}{{kafka_topic}}{% endif %}; fi  # launch GCN demo'
         search_string: '# launch GCN demo'
         insertafter: EOF
         dest: /home/gcndemo/.profile
