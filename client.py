@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import json
 import threading
 from uuid import uuid4
 import signal
@@ -20,21 +21,19 @@ def main(
     console = Console()
     console.clear()
     console.show_cursor(False)
-    consumer = confluent_kafka.Consumer(
-        {
-            "bootstrap.servers": bootstrap_server,
-            "group.id": str(uuid4()),
-            "enable.auto.commit": False,
-            "socket.timeout.ms": 1500,
-        }
-    )
-    producer = confluent_kafka.Producer(
-        {
-            "bootstrap.servers": bootstrap_server,
-            "socket.timeout.ms": 1500,
-        }
-    )
-    consumer.subscribe(list(COLORS - {color}))
+
+    states = dict()
+
+    def stats(data):
+        for broker in json.loads(data)['brokers'].values():
+            if broker['source'] != 'configured':
+                continue
+            nodeid = broker['nodeid']
+            old_state = states.get(nodeid, False)
+            new_state = broker['state'] == 'UP'
+            if old_state != new_state:
+                console.print('\nBroker', nodeid, 'UP' if new_state else 'DOWN', end=None)
+                states[nodeid] = new_state
 
     def consume():
         while True:
@@ -47,6 +46,24 @@ def main(
                         f"\n[{topic} bold]RECV[not bold] {message.value().decode()}",
                         end=None
                     )
+
+    consumer = confluent_kafka.Consumer(
+        {
+            "bootstrap.servers": bootstrap_server,
+            "group.id": str(uuid4()),
+            "enable.auto.commit": False,
+            "socket.timeout.ms": 1500,
+            "stats_cb": stats,
+            "statistics.interval.ms": 250,
+        }
+    )
+    producer = confluent_kafka.Producer(
+        {
+            "bootstrap.servers": bootstrap_server,
+            "socket.timeout.ms": 1500,
+        }
+    )
+    consumer.subscribe(list(COLORS - {color}))
 
     threading.Thread(target=consume, daemon=True).start()
 
