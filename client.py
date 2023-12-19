@@ -29,7 +29,7 @@ def main(
             nodeid = broker['nodeid']
             if broker['source'] != 'configured' or nodeid < 1:
                 continue
-            old_state = states.get(nodeid, False)
+            old_state = states.get(nodeid)
             new_state = broker['state'] == 'UP'
             if old_state != new_state:
                 console.print('\nBroker', nodeid, 'UP' if new_state else 'DOWN', end=None)
