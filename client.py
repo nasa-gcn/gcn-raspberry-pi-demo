@@ -56,12 +56,14 @@ def main(
             "socket.timeout.ms": 1500,
             "stats_cb": stats,
             "statistics.interval.ms": 250,
+            "reconnect.backoff.max.ms": 2000,
         }
     )
     producer = confluent_kafka.Producer(
         {
             "bootstrap.servers": bootstrap_server,
             "socket.timeout.ms": 1500,
+            "reconnect.backoff.max.ms": 2000,
         }
     )
     consumer.subscribe(list(COLORS - {color}))
