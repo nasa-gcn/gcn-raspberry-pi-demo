@@ -21,6 +21,7 @@ def main(
     console = Console()
     console.clear()
     console.show_cursor(False)
+    console.print('Starting client', end=None)
 
     states = dict()
 
