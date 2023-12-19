@@ -21,10 +21,6 @@
   hosts: all
 
   tasks:
-    - name: Get Kafka server IDs
-      ansible.builtin.set_fact:
-        bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}{% if not loop.last %},{% endif %}{% endfor %}"
-
     - name: Add Debian testing apt repo
       ansible.builtin.apt_repository:
         repo: deb     http://ftp.de.debian.org/debian/    testing main contrib non-free
@@ -72,12 +68,43 @@
         virtualenv_site_packages: true
         requirements: ~/requirements.txt
 
+    - name: Get Kafka server IDs
+      ansible.builtin.set_fact:
+        bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+    - name: Create /usr/local/lib/systemd/system
+      ansible.builtin.file:
+        dest: /usr/local/lib/systemd/system
+        state: directory
+      become: true
+
     - name: Auto-run demo program on /dev/tty1
-      ansible.builtin.lineinfile:
-        line: 'if [ $(tty) = /dev/tty1 ]; then exec ~/env/bin/python ~/demo.py {{bootstrap_servers}} {% if kafka_topic is defined %}{{kafka_topic}}{% endif %}; fi  # launch GCN demo'
-        search_string: '# launch GCN demo'
-        insertafter: EOF
-        dest: /home/gcndemo/.profile
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Start GCN Demo on tty1
+          After=getty.target
+          Conflicts=getty@tty1.service
+
+          [Service]
+          Type=exec
+          ExecStart=/home/gcndemo/env/bin/python /home/gcndemo/demo.py {{bootstrap_servers}} {% if kafka_topic is defined %}{{kafka_topic}}{% endif %}
+
+          StandardInput=tty-force
+          StandardOutput=inherit
+          StandardError=journal
+          TTYPath=/dev/tty1
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /usr/local/lib/systemd/system/gcndemo.service
+      become: true
+      register: needs_daemon_reload
 
     - name: Restart demo program
-      ansible.builtin.shell: pkill -HUP -t tty1
+      ansible.builtin.systemd_service:
+        name: gcndemo.service
+        daemon_reload: "{{needs_daemon_reload.changed}}"
+        enabled: true
+        state: restarted
+      become: true

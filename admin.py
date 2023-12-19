@@ -16,7 +16,6 @@ def main(
     admin = confluent_kafka.admin.AdminClient({
         'bootstrap.servers': bootstrap_server,
         'socket.timeout.ms': 1000,
-        'log_level': 0,
     })
 
     topic_collection = confluent_kafka.TopicCollection(COLORS)

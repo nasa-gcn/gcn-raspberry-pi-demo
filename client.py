@@ -24,14 +24,12 @@ def main(
             "group.id": str(uuid4()),
             "enable.auto.commit": False,
             "socket.timeout.ms": 1000,
-            "log_level": 0,
         }
     )
     producer = confluent_kafka.Producer(
         {
             "bootstrap.servers": bootstrap_server,
             "socket.timeout.ms": 1000,
-            "log_level": 0,
         }
     )
     consumer.subscribe(list(COLORS - {color}))
