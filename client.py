@@ -17,6 +17,7 @@ def main(
     color: str,
 ):
     console = Console()
+    console.clear()
     consumer = confluent_kafka.Consumer(
         {
             "bootstrap.servers": bootstrap_server,
