@@ -2,6 +2,7 @@
 import threading
 from uuid import uuid4
 import signal
+import sys
 
 import confluent_kafka
 from rich.console import Console
@@ -39,10 +40,13 @@ def main(
         while True:
             for message in consumer.consume():
                 topic = message.topic()
-                console.print(
-                    f"\n[{topic} bold]RECV[not bold] {message.error() or message.value().decode()}",
-                    end=None
-                )
+                if error := message.error():
+                    print(error, file=sys.stderr)
+                else:
+                    console.print(
+                        f"\n[{topic} bold]RECV[not bold] {message.value().decode()}",
+                        end=None
+                    )
 
     threading.Thread(target=consume, daemon=True).start()
 
