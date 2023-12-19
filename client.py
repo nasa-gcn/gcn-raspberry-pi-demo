@@ -18,6 +18,7 @@ def main(
 ):
     console = Console()
     console.clear()
+    console.show_cursor(False)
     consumer = confluent_kafka.Consumer(
         {
             "bootstrap.servers": bootstrap_server,
@@ -39,7 +40,8 @@ def main(
             for message in consumer.consume():
                 topic = message.topic()
                 console.print(
-                    f"[{topic} bold]RECV[not bold] {message.error() or message.value().decode()}"
+                    f"\n[{topic} bold]RECV[not bold] {message.error() or message.value().decode()}",
+                    end=None
                 )
 
     threading.Thread(target=consume, daemon=True).start()
@@ -48,7 +50,7 @@ def main(
         value = "-" * 20
         while len(value) > 10:
             value = randomname.get_name()
-        console.print(f"[{color} bold]SEND[not bold] {value}")
+        console.print(f"\n[{color} bold]SEND[not bold] {value}", end=None)
         producer.produce(color, value)
 
     button = gpiozero.Button(21, bounce_time=0.001, hold_time=0.5, hold_repeat=True)
