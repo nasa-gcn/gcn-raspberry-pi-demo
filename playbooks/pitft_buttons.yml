@@ -1,0 +1,60 @@
+- name: Copy PiTFT buttons script
+  hosts: all
+  tasks:
+    - name: Copy PiTFT buttons script
+      ansible.builtin.copy:
+        src: ../pitft_buttons.py
+        dest: ~/pitft_buttons.py
+        mode: preserve
+
+- name: Add pitft-buttons service for brokers
+  hosts: brokers
+  become: true
+  tasks:
+    - name: Install service
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Attach actions to PiTFT buttons
+
+          [Service]
+          Type=exec
+          ExecStart=/home/gcndemo/pitft_buttons.py "/usr/bin/systemctl restart gcndemo.service" "/usr/bin/systemctl restart confluent-kafka.service"
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /usr/local/lib/systemd/system/pitft-buttons.service
+      register: needs_daemon_reload
+
+    - name: Restart service
+      ansible.builtin.systemd_service:
+        name: pitft-buttons.service
+        daemon_reload: "{{ needs_daemon_reload.changed }}"
+        enabled: true
+        state: restarted
+
+- name: Add pitft-buttons service for clients
+  hosts: clients
+  become: true
+  tasks:
+    - name: Install service
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Attach actions to PiTFT buttons
+
+          [Service]
+          Type=exec
+          ExecStart=/home/gcndemo/pitft_buttons.py "/bin/true" "/usr/bin/systemctl restart gcndemo.service"
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /usr/local/lib/systemd/system/pitft-buttons.service
+      register: needs_daemon_reload
+
+    - name: Restart service
+      ansible.builtin.systemd_service:
+        name: pitft-buttons.service
+        daemon_reload: "{{ needs_daemon_reload.changed }}"
+        enabled: true
+        state: restarted
