@@ -41,20 +41,22 @@
     - ansible.builtin.copy:
         content: |
           allow 10.0.42.0/16
+          local stratum 8
+          makestep 1 -1
         dest: /etc/chrony/conf.d/local.conf
-      register: restart_needed
+      register: updated_conf
 
     - ansible.builtin.copy:
         content: |
-          local
           server 10.0.0.1
+          makestep 1 -1
         dest: /etc/chrony/sources.d/gateway.sources
-      register: restart_needed
+      register: updated_sources
 
     - ansible.builtin.systemd_service:
         name: chrony.service
         state: restarted
-      when: restart_needed.changed
+      when: updated_conf.changed or updated_sources.changed
 
 - name: Configure all other machines to get their time from the isolated NTP server
   hosts: all:!ntpd
