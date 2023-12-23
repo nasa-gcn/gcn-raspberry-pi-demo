@@ -13,6 +13,10 @@
 | 6 | USB-A Male to USB-C Male Right Angle Cable | DigiKey [189-3021108-01M-ND](https://www.digikey.com/en/products/detail/qualtek/3021108-01M/13181646) |
 | 1 | DC 5V 5W Power Adapter | DigiKey [102-4120-ND](https://www.digikey.com/en/products/detail/cui-inc/SWI5-5-N-P5/6579910) |
 | 18 | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
+| 12 | RJ45 8P8C Ethernet Plug | |
+| - | Spool of Cat5 cable | |
+| - | 24 AWG Insulated Wire | |
+| - | Female Breadboard Pin Headers | |
 | | **Spacers**
 | 24 | Brass Spacer M2.5 x 6mm+6mm<span style="color: red">\*</span> | DigiKey [732-12901-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971060154/9488605) |
 | 6 | Brass Spacer M2.5 x 10mm+6mm<span style="color: red">\*</span> | DigiKey [732-12917-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971100154/9488621) |
@@ -28,6 +32,8 @@
 | | **Machined Parts**
 | 1 | Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
 | 4 | Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
+| | **Miscellaneous**
+| 1 | Pelican V525 Vault Rolling Case | Manufacturer [product page](https://www.pelican.com/us/en/product/cases/rolling-case/vault/v525)
 
 <span style="color: red">\*</span> Rather than ordering these items individually, it is more cost-effective to purchase Qty. 3 [M2.5 Spacer Kit](https://www.amazon.com/dp/B01L06CUJG) available from Amazon.
 
