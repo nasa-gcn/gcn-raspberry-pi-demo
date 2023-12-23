@@ -21,19 +21,21 @@ def main(
     console = Console()
     console.clear()
     console.show_cursor(False)
-    console.print('Starting client', end=None)
+    console.print("Starting client", end=None)
 
     states = dict()
 
     def stats(data):
-        for broker in json.loads(data)['brokers'].values():
-            nodeid = broker['nodeid']
-            if broker['source'] != 'configured' or nodeid < 1:
+        for broker in json.loads(data)["brokers"].values():
+            nodeid = broker["nodeid"]
+            if broker["source"] != "configured" or nodeid < 1:
                 continue
             old_state = states.get(nodeid, False)
-            new_state = broker['state'] == 'UP'
+            new_state = broker["state"] == "UP"
             if old_state != new_state:
-                console.print('\nBroker', nodeid, 'UP' if new_state else 'DOWN', end=None)
+                console.print(
+                    "\nBroker", nodeid, "UP" if new_state else "DOWN", end=None
+                )
                 states[nodeid] = new_state
 
     def consume():
@@ -45,7 +47,7 @@ def main(
                 else:
                     console.print(
                         f"\n[{topic} bold]RECV[not bold] {message.value().decode()}",
-                        end=None
+                        end=None,
                     )
 
     consumer = confluent_kafka.Consumer(

@@ -11,13 +11,15 @@ symbols = "?NY"
 
 
 def main(
-        bootstrap_server: str,
+    bootstrap_server: str,
 ):
-    admin = confluent_kafka.admin.AdminClient({
-        'bootstrap.servers': bootstrap_server,
-        'socket.timeout.ms': 1500,
-        'reconnect.backoff.max.ms': 2000,
-    })
+    admin = confluent_kafka.admin.AdminClient(
+        {
+            "bootstrap.servers": bootstrap_server,
+            "socket.timeout.ms": 1500,
+            "reconnect.backoff.max.ms": 2000,
+        }
+    )
 
     topic_collection = confluent_kafka.TopicCollection(COLORS)
 
@@ -26,7 +28,7 @@ def main(
         title="Brokers",
         title_justify="right",
         caption="insync replicas",
-        caption_style='gray italic',
+        caption_style="gray italic",
         title_style="bold",
         show_edge=False,
         pad_edge=False,
@@ -43,15 +45,17 @@ def main(
 
     with Live(table):
         while True:
-            for topic, row, future in zip(COLORS, rows, admin.describe_topics(topic_collection).values()):
+            for topic, row, future in zip(
+                COLORS, rows, admin.describe_topics(topic_collection).values()
+            ):
                 try:
                     isr = {isr.id for isr in future.result().partitions[0].isr}
                 except confluent_kafka.KafkaException:
                     for cell in row:
-                        cell.plain = '?'
+                        cell.plain = "?"
                 else:
                     for i, cell in enumerate(row):
-                        cell.plain = 'Y' if i + 1 in isr else 'N'
+                        cell.plain = "Y" if i + 1 in isr else "N"
 
 
 if __name__ == "__main__":
