@@ -57,6 +57,16 @@ The visitor can interact with this demonstration in two ways:
 
 <span style="color: red">\*</span> Rather than ordering these items individually, it is more cost-effective to purchase Qty. 3 [M2.5 Spacer Kit](https://www.amazon.com/dp/B01L06CUJG) available from Amazon.
 
+## Assembly Notes
+
+### Power Supply for SW-008 Ethernet Switch
+
+The Brainboxes SW-008 Ethernet switch has a terminal block plug. To connect the DC 5V 5W power adapter to the Ethernet switch:
+
+1. Snip off the adapter's barrel connector. Separate a few centimeters of the wire and strip a few mm of insulation.
+2. Identify the ground and +5V wires of the power adapter using a multimeter.
+3. Consult the wiring diagram on the [data sheet for the SW-008](https://www.brainboxes.com/files/catalog/product/SW/SW-008/documents/SW-008-datasheet.pdf). Note that the power adapter has two conductors but the SW-008 terminal block has three conductors. Insert the power adapter's ground wire into the terminal block's -V receptacle and the +5V wire into the +V receptacle. Connect the terminal block's -V and Functional Earth receptacles with a jumper wire.
+
 # Setup
 
 ## To prepare the Raspberry Pis
