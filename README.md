@@ -1,39 +1,39 @@
 # Bill of Materials
 
-| Qty | Item | Part |
-| - | - | - |
-| | **Electronic Components**
-| 6 | Single Board Computer - Raspberry Pi 4B 8 GB | DigiKey [2648-SC0195(9)-ND](https://www.digikey.com/en/products/detail/raspberry-pi/SC0195-9/12159401) |
-| 6 | LCD Display - Adafruit Mini PiTFT 1.3" | DigiKey [1528-4484-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4484/11503310) |
-| 1 | 8-Port Ethernet Switch - Brainboxes SW-008 | DigiKey [2265-SW-008-ND](https://www.digikey.com/en/products/detail/brainboxes/SW-008/21574710) |
-| 6 | DPST On/Off Rocker Switch | DigiKey [EG5600-ND](https://www.digikey.com/en/products/detail/e-switch/R5ABLKREDIF0/1805312) |
-| 1 | Arcade Style SPDT Momentary Pushbutton - Red | DigiKey [1568-1476-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09336/6047815) |
-| 1 | Arcade Style SPDT Momentary Pushbutton - Green | DigiKey [1568-1481-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09341/6047820) |
-| 1 | Arcade Style SPDT Momentary Pushbutton - Blue | DigiKey [1568-1477-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09337/6047816) |
-| 6 | USB-A Male to USB-C Male Right Angle Cable | DigiKey [189-3021108-01M-ND](https://www.digikey.com/en/products/detail/qualtek/3021108-01M/13181646) |
-| 1 | DC 5V 5W Power Adapter | DigiKey [102-4120-ND](https://www.digikey.com/en/products/detail/cui-inc/SWI5-5-N-P5/6579910) |
-| 18 | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
-| 12 | RJ45 8P8C Ethernet Plug | |
-| - | Spool of Cat5 cable | |
-| - | 24 AWG Insulated Wire | |
-| - | Female Breadboard Pin Headers | |
-| | **Spacers**
-| 24 | Brass Spacer M2.5 x 6mm+6mm<span style="color: red">\*</span> | DigiKey [732-12901-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971060154/9488605) |
-| 6 | Brass Spacer M2.5 x 10mm+6mm<span style="color: red">\*</span> | DigiKey [732-12917-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971100154/9488621) |
-| 18 | Brass Spacer M2.5 x 20mm+6mm<span style="color: red">\*</span> | DigiKey [732-12949-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971200154/9488653) |
-| | **Fasteners**
-| 24 | M2.5 Hex Nut<span style="color: red">\*</span> | McMaster [91828A113](https://www.mcmaster.com/catalog/91828A113) |
-| 4 | M2.5 x 10mm Phillips Flat Head Bolt | McMaster [92010A020](https://www.mcmaster.com/catalog/92010A020) |
-| 6 | M2.5 x 6mm Phillips Pan Head Bolt | McMaster [92000A104](https://www.mcmaster.com/catalog/92000A104) |
-| 18 | M2.5 x 8mm Phillips Pan Head Bolt | McMaster [92000A105](https://www.mcmaster.com/catalog/92000A105) |
-| 4 | M3.5 x 10mm Phillips Pan Head Bolt | McMaster [92000A155](https://www.mcmaster.com/catalog/92000A155) |
-| 4 | M3.5 Hex Nut | McMaster [91828A220](https://www.mcmaster.com/catalog/91828A220) |
-| 24 | M2.5 Lock Washer | McMaster [92148A070](https://www.mcmaster.com/catalog/92148A070) | |
-| | **Machined Parts**
-| 1 | Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
-| 4 | Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
-| | **Miscellaneous**
-| 1 | Pelican V525 Vault Rolling Case | Manufacturer [product page](https://www.pelican.com/us/en/product/cases/rolling-case/vault/v525)
+| Qty | Image | Item | Part |
+| - | - | - | - |
+|    | | **Electronic Components**
+| 6  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/450/MFG_RASPBERRY-PI-4-MODEL-B-8G.jpg"/> | Single Board Computer - Raspberry Pi 4B 8 GB | DigiKey [2648-SC0195(9)-ND](https://www.digikey.com/en/products/detail/raspberry-pi/SC0195-9/12159401) |
+| 6  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/447/MFG_4484_primary.jpg"/> | LCD Display - Adafruit Mini PiTFT 1.3" | DigiKey [1528-4484-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4484/11503310) |
+| 1  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/5553/MFG_SW-008.jpg"/> | 8-Port Ethernet Switch - Brainboxes SW-008 | DigiKey [2265-SW-008-ND](https://www.digikey.com/en/products/detail/brainboxes/SW-008/21574710) |
+| 6  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/934/R5ABLKREDIF0.jpg"/> | DPST On/Off Rocker Switch | DigiKey [EG5600-ND](https://www.digikey.com/en/products/detail/e-switch/R5ABLKREDIF0/1805312) |
+| 1  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/958/MFG_COM-09336.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Red | DigiKey [1568-1476-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09336/6047815) |
+| 1  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/1074/MFG_COM-09341.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Green | DigiKey [1568-1481-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09341/6047820) |
+| 1  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/986/MFG_COM-09337.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Blue | DigiKey [1568-1477-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09337/6047816) |
+| 6  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4062/MFG_3021108-01M.jpg"/> | USB-A Male to USB-C Male Right Angle Cable | DigiKey [189-3021108-01M-ND](https://www.digikey.com/en/products/detail/qualtek/3021108-01M/13181646) |
+| 1  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/2227/MFG_SWI5-N.JPG"/> | DC 5V 5W Power Adapter | DigiKey [102-4120-ND](https://www.digikey.com/en/products/detail/cui-inc/SWI5-5-N-P5/6579910) |
+| 18 | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/917/19003-0071.jpg"/> | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
+| 12 | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4021/MFG_VDV826-704.jpg"/> | RJ45 8P8C Ethernet Plug | DigiKey [1742-VDV826-704-ND](https://www.digikey.com/en/products/detail/klein-tools-inc/VDV826-704/14636893) |
+| -  | | Spool of Cat5 cable | |
+| -  | | 24 AWG Insulated Wire | |
+| -  | | Female Breadboard Pin Headers | |
+|    | | **Spacers**
+| 24 | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/790/971060154.jpg"/> | Brass Spacer M2.5 x 6mm+6mm<span style="color: red">\*</span> | DigiKey [732-12901-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971060154/9488605) |
+| 6  | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/790/971100154.JPG"/> | Brass Spacer M2.5 x 10mm+6mm<span style="color: red">\*</span> | DigiKey [732-12917-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971100154/9488621) |
+| 18 | <img width="100" alt="product image" src="https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/28/MFG_WA-SSTIE.jpg"/> | Brass Spacer M2.5 x 20mm+6mm<span style="color: red">\*</span> | DigiKey [732-12949-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971200154/9488653) |
+|    | | **Fasteners**
+| 24 | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/918/91828A316p1-b01-digitall@1x_636713274946590000.png?ver=ImageNotFound,/mvC/Contents/gfx/ImageCache/918/91828A316p1-b01-digitall@2x_636713274946590000.png?ver=ImageNotFound,/mvC/Contents/gfx/ImageCache/918/91828A316p1-b01-digitall@3x_636713274946590000.png?ver=ImageNotFound,/mvC/Contents/gfx/ImageCache/918/91828A316p1-b01-digitall@4x_636713274946590000.png?ver=ImageNotFound"/> | M2.5 Hex Nut<span style="color: red">\*</span> | McMaster [91828A113](https://www.mcmaster.com/catalog/91828A113) |
+| 4  | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/920/92010A020p1-b01-digitall@4x_636620966298133155.png?ver=ImageNotFound"/> | M2.5 x 10mm Phillips Flat Head Bolt | McMaster [92010A020](https://www.mcmaster.com/catalog/92010A020) |
+| 6  | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/920/92000A104_39519c89-b963-4c0e-993c-fba4c890e7e0@4x_638052503212661798.png?ver=ImageNotFound"/> | M2.5 x 6mm Phillips Pan Head Bolt | McMaster [92000A104](https://www.mcmaster.com/catalog/92000A104) |
+| 18 | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/920/92000A105_b22b3fe5-93b5-49ac-9b91-70656ee74217@4x_638052505619789066.png?ver=ImageNotFound"/> | M2.5 x 8mm Phillips Pan Head Bolt | McMaster [92000A105](https://www.mcmaster.com/catalog/92000A105) |
+| 4  | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/920/92000A155_ebb9151e-fdac-412c-9a86-4338aaa7b141@4x_638052509290149428.png?ver=ImageNotFound"/> | M3.5 x 10mm Phillips Pan Head Bolt | McMaster [92000A155](https://www.mcmaster.com/catalog/92000A155) |
+| 4  | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/918/91828A220p1-b01-digitall@2x_636713274944370000.png?ver=ImageNotFound"/> | M3.5 Hex Nut | McMaster [91828A220](https://www.mcmaster.com/catalog/91828A220) |
+| 24 | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/921/92148A070_19a3daac-6bd5-43dd-a8bd-41058ab6b336@4x_1695312244.png?ver=ImageNotFound"/> | M2.5 Lock Washer | McMaster [92148A070](https://www.mcmaster.com/catalog/92148A070) | |
+|    | | **Machined Parts**
+| 1  | | Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
+| 4  | | Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
+|    | | **Miscellaneous**
+| 1  | <img width="100" alt="product image" src="https://media.pelican.com/img/products/cases/V525/pelican-vault-v525-foam-camera-case.jpg"/> | Pelican V525 Vault Rolling Case | Manufacturer [product page](https://www.pelican.com/us/en/product/cases/rolling-case/vault/v525)
 
 <span style="color: red">\*</span> Rather than ordering these items individually, it is more cost-effective to purchase Qty. 3 [M2.5 Spacer Kit](https://www.amazon.com/dp/B01L06CUJG) available from Amazon.
 
