@@ -30,8 +30,9 @@
 | 4  | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/918/91828A220p1-b01-digitall@2x_636713274944370000.png?ver=ImageNotFound"/> | M3.5 Hex Nut | McMaster [91828A220](https://www.mcmaster.com/catalog/91828A220) |
 | 24 | <img width="100" alt="product image" src="https://www.mcmaster.com/mvC/Contents/gfx/ImageCache/921/92148A070_19a3daac-6bd5-43dd-a8bd-41058ab6b336@4x_1695312244.png?ver=ImageNotFound"/> | M2.5 Lock Washer | McMaster [92148A070](https://www.mcmaster.com/catalog/92148A070) | |
 |    | | **Machined Parts**
-| 1  | | Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
-| 4  | | Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
+| 1  | <img width="100" alt="product image" src="CAD/Board v2.png"/> | Aluminum Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
+| 4  | <img width="100" alt="product image" src="CAD/Foot v4.png"/> | Aluminum Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
+| 6  | <img width="100" alt="product image" src="CAD/Cover v4.png"/> | Transparent Acrylic Raspberry Pi Cover | Fusion 360 [CAD model](https://a360.co/3GTA6J0) |
 |    | | **Miscellaneous**
 | 1  | <img width="100" alt="product image" src="https://media.pelican.com/img/products/cases/V525/pelican-vault-v525-foam-camera-case.jpg"/> | Pelican V525 Vault Rolling Case | Manufacturer [product page](https://www.pelican.com/us/en/product/cases/rolling-case/vault/v525)
 
