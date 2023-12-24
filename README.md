@@ -1,4 +1,23 @@
-# Bill of Materials
+# GCN Raspberry Pi Kafka Demo
+
+This project is an educational, interactive demonstration of fault-tolerant [Apache Kafka](https://kafka.apache.org) data streaming technology as used in astronomy by NASA's [General Coordinates Network (GCN)](https://gcn.nasa.gov). It is made for exhibition the NASA booth at conferences and trade shows. It was first shown at the [243rd Meeting of the American Astronomical Society in New Orleans, LA, January 7-11, 2024](https://aas.org/meetings/aas243).
+
+The General Coordinates Network (GCN) is a public collaboration platform run by NASA for the astronomy research community to share alerts and rapid communications about high-energy, multimessenger, and transient phenomena. Idistributes alerts between space- and ground-based observatories, physics experiments, and thousands of astronomers around the world.
+
+One of GCN's core services is a public astronomy notification service built on a [Confluent Kafka](https://www.confluent.io/product/confluent-platform/) deployed in the cloud on [Amazon Web Services](https://aws.amazon.com). In this demonstration, the **Kafka cluster** consists of three **brokers** running on [Raspberry Pi](https://www.raspberrypi.com) single-board computers, configured in a manner that is similar to the production GCN cluster. Three more Raspberry Pis are configured as Kafka **clients**; each client **produces** alerts on one **topic** and **consumes** alerts on the two other topics.
+
+The 3-broker Kafka cluster is running in a **fully replicated** configuration: each topic has three copies, one stored on each broker. The cluster **acknowledges** records produced by the clients if it is stored on at least **two in sync replicas**. Thus, in normal operation, the cluster is tolerant to outages of any one broker.
+
+Each Raspberry Pi has an LCD display. On the brokers, the display shows a table that indicates which topics are in sync. On the clients, the displays show a scrolling record of messages produced and consumed.
+
+The visitor can interact with this demonstration in two ways:
+
+1. Toggle the on/off switches to cut the network connection to any combinations of brokers and clients.
+2. Press any of the buttons next to the clients to produce a message on that client's topic. Press and hold to produce messages repeatedly.
+
+# Construction
+
+## Bill of Materials
 
 | Qty | Image | Item | Part |
 | - | - | - | - |
