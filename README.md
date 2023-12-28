@@ -1,5 +1,7 @@
 # GCN Raspberry Pi Kafka Demo
 
+![Photograph of GCN Raspberry Pi Kafka Demo](photos/Kafka_Cluster_top_SED_7248.jpg)
+
 This project is an educational, interactive demonstration of fault-tolerant [Apache Kafka](https://kafka.apache.org) data streaming technology as used in astronomy by NASA's [General Coordinates Network (GCN)](https://gcn.nasa.gov). It is made for exhibition the NASA booth at conferences and trade shows. It was first shown at the [243rd Meeting of the American Astronomical Society in New Orleans, LA, January 7-11, 2024](https://aas.org/meetings/aas243).
 
 The General Coordinates Network (GCN) is a public collaboration platform run by NASA for the astronomy research community to share alerts and rapid communications about high-energy, multimessenger, and transient phenomena. Idistributes alerts between space- and ground-based observatories, physics experiments, and thousands of astronomers around the world.
