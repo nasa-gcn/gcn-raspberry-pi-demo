@@ -66,6 +66,7 @@
     - ansible.builtin.copy:
         content: |
           server {{groups.ntpd[0]}} iburst
+          makestep 1 -1
         dest: /etc/chrony/sources.d/local.sources
       register: restart_needed
 
