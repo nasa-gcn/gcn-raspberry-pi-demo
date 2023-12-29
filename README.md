@@ -19,6 +19,10 @@ The visitor can interact with this demonstration in two ways:
 
 # Construction
 
+## CAD Model
+
+The CAD model is available online in Autodesk Fusion 360 at https://a360.co/3TFbETm.
+
 ## Bill of Materials
 
 | Qty | Image | Item | Part |
