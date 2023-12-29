@@ -171,3 +171,21 @@ If Raspberry Pi is on and the display is frozen, then you can restart the progra
 ### One or more Kafka brokers are never in sync.
 
 Sometimes the Kafka broker fails to start when the system boots up. To forcibly restart the Kafka broker, carefully reach under the Raspberry Pi's cover with an insulating object and press the _lowermost_ of the two buttons on the Mini PiTFT to restart the display program.
+
+### How do I see diagnostic messages from the Kafka client programs?
+
+The Kafka client prints many useful diagnostic messages when it obtains or loses connections to brokers. These messages are useful for tuning performance and fault tolerance. You can view these messages live by following these steps:
+
+1. Connect your workstation to the Ethernet switch.
+
+2. Start an SSH session on the Raspberry Pi that you want to watch by running this command:
+
+    <pre>ssh gcndemo@10.0.42.<i>N</i></pre>
+
+3. In the SSH session, run the following command:
+
+       journalctl -f -u gcndemo.service
+
+   (Note that if you cut off that Raspberry Pi's network connection, then the
+   live display will stop, but it should resume and fill in everything that you
+   have missed as soon as you restore the connection.)
