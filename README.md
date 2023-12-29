@@ -189,3 +189,11 @@ The Kafka client prints many useful diagnostic messages when it obtains or loses
    (Note that if you cut off that Raspberry Pi's network connection, then the
    live display will stop, but it should resume and fill in everything that you
    have missed as soon as you restore the connection.)
+
+# Lessons learned
+
+1. We built the chassis by CNC-machining a sheet of aluminum because our machine shop is most suited for precision machining of metals and plastics for spacecraft parts. However, next time it might be cheaper and faster to build it out of plywood if we can get access to a laser cutting machine or a CNC wood router.
+
+2. We added the artwork to the chassis by printing on paper, gluing the paper to the aluminum with spray adhesive, and cutting out the pockets and holes with a hobby knife. It might be less labor-intensive and result in a more durable finish if we instead printed it on a vinyl plotter/cutter and adhered it to the chassis using heat transfer.
+
+3. It was difficult to get accurate dimensions for the right-angle USB power connectors. As a result, they just barely fit through the holes that we made for them in the chassis, and each connector butts up against the adjacent Raspberry Pi's PCB.
