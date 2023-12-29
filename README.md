@@ -169,7 +169,7 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 ### The interactive display has frozen.
 
-When Raspberry Pi OS is shut down and power is still suplied to the Raspberry Pi, the Mini PiTFT display will show the last image that was sent to it. If the green ACT light in the corner of the Raspberry Pi is off and/or the link lights on the Raspberry Pi's Ethernet port are off, then Raspebrry Pi OS is halted. If this is the case, then unplug and re-plug the power to the Raspberry Pi to restart it.
+When Raspberry Pi OS is shut down and power is still suplied to the Raspberry Pi, the Mini PiTFT display will show the last image that was sent to it. If the green ACT light in the corner of the Raspberry Pi is off _and_ the link lights on the Raspberry Pi's Ethernet port are off, then Raspebrry Pi OS is halted. If this is the case, then unplug and re-plug the power to the Raspberry Pi to restart it.
 
 If Raspberry Pi is on and the display is frozen, then you can restart the program that drives the dispaly. To do this, carefully reach under the Raspberry Pi's cover with an insulating object and press the _uppermost_ of the two buttons on the Mini PiTFT to restart the display program.
 
