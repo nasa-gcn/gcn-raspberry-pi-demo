@@ -155,15 +155,9 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 ## Shutdown
 
-1. Ensure that all rocker switches are in the "On" position.
+1. For each Raspberry Pi, carefully reach under its transparent acrylic cover with an insulating object and press and hold for five seconds the _uppermost_ of the two buttons on the Mini PiTFT.
 
-2. Connect your workstation and run the following command to gracefully halt Raspberry Pi OS:
-
-        ansible all -b -i inventory.yml -a poweroff
-
-3. Wait about a minute.
-
-4. Unplug both power cables.
+2. Wait about 30 seconds, or until all of the green ACT lights on the Raspberry Pis are off _and_ the EThernet link lights are all off.
 
 ## Troubleshooting
 

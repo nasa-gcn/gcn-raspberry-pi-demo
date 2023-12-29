@@ -1,60 +1,55 @@
-- name: Copy PiTFT buttons script
+- name: Install systemd-gpio
   hosts: all
+  become: true
   tasks:
-    - name: Copy PiTFT buttons script
-      ansible.builtin.copy:
-        src: ../pitft_buttons.py
-        dest: ~/pitft_buttons.py
-        mode: preserve
+    - name: Download Debian package
+      ansible.builtin.apt:
+        deb: https://nasa-gcn.github.io/systemd-gpio/python3-systemd-gpio_0.0.1~pre1_all.deb
 
-- name: Add pitft-buttons service for brokers
+- name: Configure buttons for brokers
   hosts: brokers
   become: true
   tasks:
-    - name: Install service
+    - name: Configure GPIO23
       ansible.builtin.copy:
         content: |
-          [Unit]
-          Description=Attach actions to PiTFT buttons
+          GPIO_HOLD_TIME="5"
+          GPIO_WHEN_HELD="poweroff"
+          GPIO_WHEN_RELEASED="systemctl restart gcndemo.service"
+        dest: /etc/gpio/23
 
-          [Service]
-          Type=exec
-          ExecStart=/home/gcndemo/pitft_buttons.py "/usr/bin/systemctl restart gcndemo.service" "/usr/bin/systemctl restart confluent-kafka.service"
-
-          [Install]
-          WantedBy=multi-user.target
-        dest: /usr/local/lib/systemd/system/pitft-buttons.service
-      register: needs_daemon_reload
-
-    - name: Restart service
+    - name: Restart GPIO23 service
       ansible.builtin.systemd_service:
-        name: pitft-buttons.service
-        daemon_reload: "{{ needs_daemon_reload.changed }}"
+        name: gpio@23.service
         enabled: true
         state: restarted
 
-- name: Add pitft-buttons service for clients
+    - name: Configure GPIO24
+      ansible.builtin.copy:
+        content: |
+          GPIO_WHEN_RELEASED="systemctl restart confluent-kafka.service"
+        dest: /etc/gpio/24
+
+    - name: Restart GPIO24 service
+      ansible.builtin.systemd_service:
+        name: gpio@24.service
+        enabled: true
+        state: restarted
+
+- name: Configure buttons for clients
   hosts: clients
   become: true
   tasks:
-    - name: Install service
+    - name: Configure GPIO24
       ansible.builtin.copy:
         content: |
-          [Unit]
-          Description=Attach actions to PiTFT buttons
+          GPIO_HOLD_TIME="5"
+          GPIO_WHEN_HELD="poweroff"
+          GPIO_WHEN_RELEASED="systemctl restart gcndemo.service"
+        dest: /etc/gpio/24
 
-          [Service]
-          Type=exec
-          ExecStart=/home/gcndemo/pitft_buttons.py "/bin/true" "/usr/bin/systemctl restart gcndemo.service"
-
-          [Install]
-          WantedBy=multi-user.target
-        dest: /usr/local/lib/systemd/system/pitft-buttons.service
-      register: needs_daemon_reload
-
-    - name: Restart service
+    - name: Restart GPIO24 service
       ansible.builtin.systemd_service:
-        name: pitft-buttons.service
-        daemon_reload: "{{ needs_daemon_reload.changed }}"
+        name: gpio@24.service
         enabled: true
         state: restarted
