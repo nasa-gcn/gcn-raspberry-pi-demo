@@ -15,7 +15,7 @@
         content: |
           GPIO_HOLD_TIME="5"
           GPIO_WHEN_HELD="poweroff"
-          GPIO_WHEN_RELEASED="systemctl restart gcndemo.service"
+          GPIO_WHEN_PRESSED="systemctl restart gcndemo.service"
         dest: /etc/gpio/23
 
     - name: Restart GPIO23 service
@@ -27,7 +27,7 @@
     - name: Configure GPIO24
       ansible.builtin.copy:
         content: |
-          GPIO_WHEN_RELEASED="systemctl restart confluent-kafka.service"
+          GPIO_WHEN_PRESSED="systemctl restart confluent-kafka.service"
         dest: /etc/gpio/24
 
     - name: Restart GPIO24 service
