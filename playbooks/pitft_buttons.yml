@@ -6,6 +6,39 @@
       ansible.builtin.apt:
         deb: https://nasa-gcn.github.io/systemd-gpio/python3-systemd-gpio_0.0.1~pre1_all.deb
 
+- name: Configure poweroff safe message service
+  hosts: all
+  become: true
+  tasks:
+    - name: Create service
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Display a message to the Mini PiTFT screen that it is safe to turn off the computer
+          Conflicts=getty@tty1.service
+          DefaultDependencies=no
+          Before=halt.target shutdown.target reboot.target
+
+          [Service]
+          Type=oneshot
+          ExecStart=/bin/echo '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt is now safe\nto turn off\nyour computer.'
+          RemainAfterExit=yes
+          StandardInput=tty-force
+          StandardOutput=inherit
+          StandardError=journal
+          TTYPath=/dev/tty1
+
+          [Install]
+          WantedBy=halt.target shutdown.target reboot.target
+        dest: /usr/local/lib/systemd/system/safe-to-poweroff.service
+      register: needs_daemon_reload
+
+    - name: Enable service
+      ansible.builtin.systemd_service:
+        name: safe-to-poweroff.service
+        daemon_reload: "{{ needs_daemon_reload.changed }}"
+        enabled: true
+
 - name: Configure buttons for brokers
   hosts: brokers
   become: true
