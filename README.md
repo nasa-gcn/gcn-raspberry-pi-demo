@@ -163,7 +163,9 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 1. For each Raspberry Pi, carefully reach under its transparent acrylic cover with an insulating object and press and hold for five seconds the _uppermost_ of the two buttons on the Mini PiTFT.
 
-2. Wait about 30 seconds, or until all of the green ACT lights on the Raspberry Pis are off _and_ the Ethernet link lights are all off.
+2. What until the Mini PiTFT displays the message, `It is now safe to turn off your computer.`
+
+3. Unplug the power supplies for the USB power hub and the Ethernet switch.
 
 ## Troubleshooting
 
