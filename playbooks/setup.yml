@@ -22,10 +22,23 @@
           - confluent-kafka
           - default-jdk-headless
 
-    - name: Create /usr/local/lib/systemd/system
+    - name: Create systemd directories
       ansible.builtin.file:
-        dest: /usr/local/lib/systemd/system
+        dest: /usr/local/lib/systemd/system/confluent-{{ item }}.service.d
         state: directory
+      loop:
+        - zookeeper
+        - kafka
+
+    - name: Restart Zookeeper and Kafka if they ever halt or crash unexpectedly
+      ansible.builtin.copy:
+        content: |
+          [Service]
+          Restart=always
+        dest: /usr/local/lib/systemd/system/confluent-{{ item }}.service.d/autorestart.conf
+      loop:
+        - zookeeper
+        - kafka
 
     - name: Work around https://github.com/confluentinc/schema-registry/pull/917
       ansible.builtin.copy:
