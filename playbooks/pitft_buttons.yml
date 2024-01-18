@@ -4,7 +4,7 @@
   tasks:
     - name: Download Debian package
       ansible.builtin.apt:
-        deb: https://nasa-gcn.github.io/systemd-gpio/python3-systemd-gpio_0.0.1~pre1_all.deb
+        deb: https://asd.gsfc.nasa.gov/Leo.Singer/python3-systemd-gpio_0.1.0-1_all.deb
 
 - name: Configure poweroff safe message service
   hosts: all
