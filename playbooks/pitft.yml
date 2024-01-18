@@ -13,8 +13,8 @@
 
     - name: Set up /boot/cmdline.txt
       ansible.builtin.replace:
-        regexp: ' rootwait (.+| *)quiet '
-        replace: ' rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet '
+        regexp: " rootwait (.+| *)quiet "
+        replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet "
         dest: /boot/cmdline.txt
       notify:
         - Reboot
