@@ -8,24 +8,38 @@
         insertafter: \[all\]
         line: dtoverlay=minipitft13,fps=60
         dest: /boot/config.txt
+      notify:
+        - Reboot
 
     - name: Set up /boot/cmdline.txt
       ansible.builtin.replace:
-        regexp: " rootwait (.+| *)quiet "
-        replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet "
+        regexp: ' rootwait (.+| *)quiet '
+        replace: ' rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet '
         dest: /boot/cmdline.txt
+      notify:
+        - Reboot
 
     - name: Set console font face
       ansible.builtin.replace:
         regexp: FONTFACE=".*"
         replace: FONTFACE="Terminus"
         dest: /etc/default/console-setup
+      notify:
+        - Reboot
 
     - name: Set console font size
       ansible.builtin.replace:
         regexp: FONTSIZE=".*"
         replace: FONTSIZE="16x32"
         dest: /etc/default/console-setup
+      notify:
+        - Reboot
 
     - name: Boot to framebuffer console
       ansible.builtin.shell: raspi-config nonint do_boot_behaviour B2
+      notify:
+        - Reboot
+
+  handlers:
+    - name: Reboot
+      ansible.builtin.reboot:
