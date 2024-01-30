@@ -40,7 +40,7 @@ The CAD model is available online in Autodesk Fusion 360 at https://a360.co/3TFb
 | 1  | <img width="100" alt="product image" src="images/MFG_SWI5-N.JPG"/> | DC 5V 5W Power Adapter | DigiKey [102-4120-ND](https://www.digikey.com/en/products/detail/cui-inc/SWI5-5-N-P5/6579910) |
 | 18 | <img width="100" alt="product image" src="images/19003-0071.jpg"/> | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
 | 12 | <img width="100" alt="product image" src="images/MFG_VDV826-704.jpg"/> | RJ45 8P8C Ethernet Plug | DigiKey [1742-VDV826-704-ND](https://www.digikey.com/en/products/detail/klein-tools-inc/VDV826-704/14636893) |
-| 1  | | 6-port USB-A power hub, 5V 2.5A DC per output | No part number available; we have some nondescript device by a manufacturer called Lottogo that might be [this one](https://www.tomoson.com/p/lottogo-electronics-charging-station-with-6-port-usb-charger-for-iphone-ipad-sam). **FIXME**: find a similar part that is available through DigiKey. |
+| 1  | <img width="100" alt="product image" src="images/A2123113_TD01_V1_49af9ef5-f54f-45e2-a89f-2c85bd30d60b.jpg"/> | Anker 360 Charger (60W) | Anker [A2123](https://www.anker.com/products/a2123) |
 | -  | | Spool of Cat5 cable | |
 | -  | | 24 AWG Insulated Wire | |
 | -  | | Female Breadboard Pin Headers | |
