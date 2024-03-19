@@ -3,19 +3,19 @@
   become: true
 
   tasks:
-    - name: Set up /boot/config.txt
+    - name: Set up /boot/firmware/config.txt
       ansible.builtin.lineinfile:
         insertafter: \[all\]
         line: dtoverlay=minipitft13,fps=60
-        dest: /boot/config.txt
+        dest: /boot/firmware/config.txt
       notify:
         - Reboot
 
-    - name: Set up /boot/cmdline.txt
+    - name: Set up /boot/firmware/cmdline.txt
       ansible.builtin.replace:
         regexp: " rootwait (.+| *)quiet "
         replace: " rootwait consoleblank=0 fbcon=map:10 fbcon=rotate:{{pitft_rotate}} quiet "
-        dest: /boot/cmdline.txt
+        dest: /boot/firmware/cmdline.txt
       notify:
         - Reboot
 

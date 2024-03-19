@@ -7,7 +7,7 @@
       ansible.builtin.lineinfile:
         insertafter: \[all\]
         line: "{{item}}"
-        dest: /boot/config.txt
+        dest: /boot/firmware/config.txt
       loop:
         - dtoverlay=disable-bt
         - dtoverlay=disable-wifi
