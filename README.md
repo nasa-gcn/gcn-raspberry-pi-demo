@@ -83,52 +83,33 @@ Follow these instructions for _N_ = 1 to 6 to prepare each of the 6 Raspberry Pi
 
 1. Download, install, and launch the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) application.
 
-2. Mount a MicroSD card.
+2. Mount a microSD card.
 
-3. In the Raspberry Pi Imager application, select the OS `Raspberry Pi OS (64-bit)`.
+3. In the Raspberry Pi Imager application, select the device `Raspberry Pi 4` and the OS `Raspberry Pi OS (64-bit)`.
 
-4. Click the gear icon to select advanced options.
+4. Click `Next` and choose `Edit Settings`.
 
-    a. Set hostname to <code>gcndemo<i>N</i></code> where _N_ is an integer.
+    a. Under the `General` tab, check `Set hostname`. Set the hostname to <code>gcndemo<i>N</i></code> where _N_ is an integer.
 
-    b. Check `Enable SSH`. Check `Allow public-key authentication only` and select your authorized keys.
+    b. Check `Set username and password`. Set the username to `gcndemo`; choose (and save in a secure location) a random password.
 
-    c. Check `Set username and password`. Set the username to `gcndemo`; choose (and save in a secure location) a random password.
+    c. Check `Configure wireless LAN` and enter the name and password for the WiFi network that the Raspberry Pis will use to connect to the Internet to download software. Set `Wireless LAN country` to `US`.
 
-    d. Check `Set locale settings` and select your time zone and keyboard layout.
+    d. Check `Set locale settings` and configure the time zone and keyboard layout.
 
-    e. Click `Save`.
+    e. Under the `Services` tab, check `Enable SSH`. Check `Allow public-key authentication only` and select your authorized keys.
+
+    f. Under the `Options` tab, uncheck `Eject media when finished`.
+
+    f. Click `Save`.
 
 5. Click `Write`.
 
-6. Remove the MicroSD card from your computer
+6. After Raspberry Pi Imager has finished writing, the microSD card should appear on your computer as a disk called `BOOT`. Inside this disk, edit the file called `cmdline.txt`. Add the following code to the beginning of the first line of that file: <code>ip=10.0.42.<i>N</i>::255.255.255.0::eth0</code>, where _N_ is the number of the device.
 
-Then, on the Raspberry Pi:
+7. Unmount and remove the microSD card from your computer.
 
-1. Insert the MicroSD card into the Raspberry Pi. Connect a monitor, keyboard, and mouse, and boot it.
-
-2. Open a terminal and make the following changes:
-
-    a. Write the following to /etc/network/interfaces.d/eth0:
-
-    <pre>
-    auto eth0
-    allow-hotplug eth0
-    iface eth0 inet static
-        address 10.0.42.<i>N</i>/16</pre>
-
-    b. Write the following to /etc/ssh/sshd_config.d/linklocal.conf:
-
-    <pre>ListenAddress 10.0.42.<i>N</i></pre>
-
-    c. Run the following:
-
-        sudo apt-get update
-        sudo apt-get update
-
-5. Reboot the Raspberry Pi.
-
-Make sure that you can ssh to the Raspberry Pi. Then unplug the monitor, keyboard, and mouse. Then proceed to set up the next Raspberry Pi.
+8. Insert the microSD card into the Raspberry Pi.
 
 ## To configure our demo software on the Raspberry Pis
 
