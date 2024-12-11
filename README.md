@@ -123,7 +123,8 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 3. Run each of our playbooks in the following order:
 
-        ansible-playbook -i inventory.yml playbooks/proxy.yml
+        ansible-playbook -i inventory.yml playbooks/disable-bluetooth.yml
+        ansible-playbook -i inventory.yml playbooks/ntp.yml
         ansible-playbook -i inventory.yml playbooks/pitft.yml
         ansible-playbook -i inventory.yml playbooks/reboot.yml
         ansible-playbook -i inventory.yml playbooks/setup.yml

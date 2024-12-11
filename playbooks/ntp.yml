@@ -1,35 +1,8 @@
-- name: Set up proxy through lab gateway system
+- name: Configure all machines to derive time from gcndemo1
   hosts: all
   become: true
 
   tasks:
-    - name: Disable WiFi and Bluetooth
-      ansible.builtin.lineinfile:
-        insertafter: \[all\]
-        line: "{{item}}"
-        dest: /boot/firmware/config.txt
-      loop:
-        - dtoverlay=disable-bt
-        - dtoverlay=disable-wifi
-
-    - name: Set up HTTP_PROXY/HTTPS_PROXY environment variables
-      ansible.builtin.lineinfile:
-        line: "{{item}}=http://10.0.0.1:3128/"
-        dest: /etc/environment
-      loop:
-        - http_proxy
-        - https_proxy
-        - HTTP_PROXY
-        - HTTPS_PROXY
-
-    - name: Set up NO_PROXY environment variables
-      ansible.builtin.lineinfile:
-        line: "{{item}}=127.0.0.1,localhost"
-        dest: /etc/environment
-      loop:
-        - no_proxy
-        - NO_PROXY
-
     - name: Install Chrony on all hosts
       ansible.builtin.apt:
         name: chrony
@@ -45,13 +18,6 @@
           makestep 1 -1
         dest: /etc/chrony/conf.d/local.conf
       register: updated_conf
-
-    - ansible.builtin.copy:
-        content: |
-          server 10.0.0.1
-          makestep 1 -1
-        dest: /etc/chrony/sources.d/gateway.sources
-      register: updated_sources
 
     - ansible.builtin.systemd_service:
         name: chrony.service

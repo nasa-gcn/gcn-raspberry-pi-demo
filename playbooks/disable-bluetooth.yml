@@ -1,0 +1,12 @@
+- name: Disable bluetooth
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Disable Bluetooth
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: "{{item}}"
+        dest: /boot/firmware/config.txt
+      loop:
+        - dtoverlay=disable-bt
