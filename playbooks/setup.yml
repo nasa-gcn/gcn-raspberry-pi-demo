@@ -10,11 +10,11 @@
 
     - name: Add Confluent Debian Key
       ansible.builtin.apt_key:
-        url: https://packages.confluent.io/deb/7.5/archive.key
+        url: https://packages.confluent.io/deb/7.8/archive.key
 
     - name: Add Confluent Debian Repo
       ansible.builtin.apt_repository:
-        repo: deb [arch=amd64] https://packages.confluent.io/deb/7.5 stable main
+        repo: deb [arch=amd64] https://packages.confluent.io/deb/7.8 stable main
 
     - name: Install Confluent Platform
       ansible.builtin.apt:

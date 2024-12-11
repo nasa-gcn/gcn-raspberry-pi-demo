@@ -1,4 +1,4 @@
-git+https://github.com/lpsinger/confluent-kafka-python@fix-segfault-on-admin-client-flaky-connection
+confluent-kafka @ git+https://github.com/confluentinc/confluent-kafka-python@v2.6.0
 gpiozero
 randomname
 rich
