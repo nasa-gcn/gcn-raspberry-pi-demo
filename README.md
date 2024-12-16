@@ -30,7 +30,7 @@ The CAD model is available online in Autodesk Fusion 360 at https://a360.co/3TFb
 |    | | **Electronic Components**
 | 6  | <img width="100" alt="product image" src="images/MFG_RASPBERRY-PI-4-MODEL-B-8G.jpg"/> | Single Board Computer - Raspberry Pi 4B 8 GB | DigiKey [2648-SC0195(9)-ND](https://www.digikey.com/en/products/detail/raspberry-pi/SC0195-9/12159401) |
 | 6  | <img width="100" alt="product image" src="images/1510828237_IMG_902579.jpg"/> | SanDisk 32GB Extreme UHS-I microSDHC Memory Card | B&H Photo [SAEMSD32A1G3](https://www.bhphotovideo.com/c/product/1455053-REG/sandisk_32gb_extreme_uhs_i_microsdhc.html) |
-| 6  | <img width="100" alt="product image" src="images/MFG_4484_primary.jpg"/> | LCD Display - Adafruit Mini PiTFT 1.3"/> | DigiKey [1528-4484-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4484/11503310) |
+| 6  | <img width="100" alt="product image" src="images/MFG_4484_primary.jpg"/> | LCD Display - Adafruit Mini PiTFT 1.3" | DigiKey [1528-4484-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4484/11503310) |
 | 1  | <img width="100" alt="product image" src="images/MFG_SW-008.jpg"/> | 8-Port Ethernet Switch - Brainboxes SW-008 | DigiKey [2265-SW-008-ND](https://www.digikey.com/en/products/detail/brainboxes/SW-008/21574710) |
 | 6  | <img width="100" alt="product image" src="images/R5ABLKREDIF0.jpg"/> | DPST On/Off Rocker Switch | DigiKey [EG5600-ND](https://www.digikey.com/en/products/detail/e-switch/R5ABLKREDIF0/1805312) |
 | 1  | <img width="100" alt="product image" src="images/MFG_COM-09336.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Red | DigiKey [1568-1476-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09336/6047815) |
