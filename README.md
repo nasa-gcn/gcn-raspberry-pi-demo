@@ -157,10 +157,6 @@ When Raspberry Pi OS is shut down and power is still suplied to the Raspberry Pi
 
 If Raspberry Pi is on and the display is frozen, then you can restart the program that drives the display. To do this, carefully reach under the Raspberry Pi's cover with an insulating object and press the _uppermost_ of the two buttons on the Mini PiTFT to restart the display program.
 
-### One or more Kafka brokers are never in sync.
-
-Sometimes the Kafka broker fails to start when the system boots up. To forcibly restart the Kafka broker, carefully reach under the Raspberry Pi's cover with an insulating object and press the _lowermost_ of the two buttons on the Mini PiTFT to restart the display program.
-
 ### How do I see diagnostic messages from the Kafka client programs?
 
 The Kafka client prints many useful diagnostic messages when it obtains or loses connections to brokers. These messages are useful for tuning performance and fault tolerance. You can view these messages live by following these steps:
