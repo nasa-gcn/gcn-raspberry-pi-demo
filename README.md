@@ -117,11 +117,15 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 1. Connect all 6 of the Raspberry Pis _and_ your workstation to a single Ethernet switch. Boot all of the Raspberry Pis.
 
-2. Install Ansible on your workstation by running the command:
+2. Clone this repository onto your workstation by running the command:
+
+        git clone https://github.com/nasa-gcn/gcn-raspberry-pi-demo
+
+3. Install Ansible on your workstation by running the command:
 
         pip install ansible
 
-3. Run each of our playbooks in the following order:
+4. Run each of our playbooks in the following order:
 
         ansible-playbook -i inventory.yml playbooks/disable-bluetooth.yml
         ansible-playbook -i inventory.yml playbooks/ntp.yml
