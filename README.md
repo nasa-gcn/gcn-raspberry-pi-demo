@@ -111,6 +111,24 @@ Follow these instructions for _N_ = 1 to 6 to prepare each of the 6 Raspberry Pi
 
 8. Insert the microSD card into the Raspberry Pi.
 
+## Configure SSH connection with workstation
+
+1. for mac os 
+2. go to setting
+network panel
+find ethernet interface
+details
+swtich to manual
+appropiate IP address 10.0.42.smth else
+give same subnet mask as Pi 255...
+save
+boot the Pi
+connect inidivudlaly with ssh command
+warning message about unknown ssh fingerprint on first time - accept
+get terminal 
+repeat for all
+
+
 ## To configure our demo software on the Raspberry Pis
 
 We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of the Raspberry Pis.
