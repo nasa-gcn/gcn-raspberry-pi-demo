@@ -120,7 +120,7 @@ find ethernet interface
 details
 swtich to manual
 appropiate IP address 10.0.42.smth else
-give same subnet mask as Pi 255...
+give same subnet mask as Pi 255.255.255.0
 save
 boot the Pi
 connect inidivudlaly with ssh command
