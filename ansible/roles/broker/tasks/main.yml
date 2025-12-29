@@ -1,0 +1,97 @@
+- name: Get Kafka server ID
+  ansible.builtin.set_fact:
+    broker_id: "{{ ansible_play_hosts_all.index(inventory_hostname) + 1 }}"
+    broker_bootstrap_servers: "{% for host in ansible_play_hosts_all %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
+    broker_controller_quorom_voters: "{% for host in ansible_play_hosts_all %}{{ loop.index }}@{{ host }}:9093{% if not loop.last %},{% endif %}{% endfor %}"
+
+- name: Add Confluent Debian server repo
+  ansible.builtin.deb822_repository:
+    name: confluent-platform
+    architectures: arm64
+    install_python_debian: true
+    uris: https://packages.confluent.io/deb/8.1
+    signed_by: https://packages.confluent.io/deb/8.1/archive.key
+    suites: stable
+    components:
+      - main
+  register: broker_apt_sources
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: broker_apt_sources.changed
+
+- name: Install Confluent Platform
+  ansible.builtin.apt:
+    name:
+      - confluent-kafka
+      - default-jdk-headless
+
+- name: Create systemd directory
+  ansible.builtin.file:
+    dest: /usr/local/lib/systemd/system/confluent-kafka.service.d
+    state: directory
+    mode: '644'
+
+
+- name: Restart Kafka if it ever halts or crashes unexpectedly
+  ansible.builtin.copy:
+    content: |
+      [Service]
+      Restart=always
+    dest: /usr/local/lib/systemd/system/confluent-kafka.service.d/autorestart.conf
+    mode: '644'
+
+- name: Configure Kafka
+  ansible.builtin.copy:
+    content: |
+      node.id={{ broker_id }}
+      process.roles=broker,controller
+      controller.quorum.voters={{ broker_controller_quorom_voters }}
+      controller.listener.names=CONTROLLER
+      listeners=PLAINTEXT://{{ inventory_hostname }}:9092,CONTROLLER://{{ inventory_hostname }}:9093
+      log.dirs=/var/lib/kafka
+      default.replication.factor={{ ansible_play_hosts_all | length }}
+      min.insync.replicas=2
+      broker.session.timeout.ms = 500
+      broker.heartbeat.interval.ms = 250
+      controller.quorum.election.timeout.ms = 500
+      controller.quorum.fetch.timeout.ms = 500
+      controller.quorum.request.timeout.ms = 500
+      controller.socket.timeout.ms = 500
+      group.initial.rebalance.delay.ms = 0
+      replica.lag.time.max.ms = 500
+      replica.socket.timeout.ms = 500
+      request.timeout.ms = 500
+      share.coordinator.write.timeout.ms = 500
+      socket.connection.setup.timeout.max.ms = 500
+      socket.connection.setup.timeout.ms = 500
+      retries = 1
+    dest: /etc/kafka/server.properties
+    mode: '644'
+
+- name: Start confluent-kafka.service
+  ansible.builtin.systemd_service:
+    name: confluent-kafka.service
+    enabled: true
+    state: restarted
+
+- name: Format Kafka storage
+  ansible.builtin.command:
+    cmd: kafka-storage format -t foo -c /etc/kafka/server.properties
+    creates: /var/lib/kafka/meta.properties
+
+- name: Start confluent-kafka.service
+  ansible.builtin.systemd_service:
+    name: confluent-kafka.service
+    enabled: true
+    state: started
+
+- name: Create Kafka topics
+  ansible.builtin.command:
+    cmd: kafka-topics --bootstrap-server {{ broker_bootstrap_servers }} --create --if-not-exists --topic {{ item }}
+    creates: /var/lib/kafka/{{ item }}-0
+  loop:
+    - red
+    - green
+    - blue

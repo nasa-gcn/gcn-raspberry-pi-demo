@@ -1,7 +1,0 @@
-- name: Power off
-  hosts: all
-  become: true
-
-  tasks:
-    - name: Power off
-      ansible.builtin.shell: poweroff

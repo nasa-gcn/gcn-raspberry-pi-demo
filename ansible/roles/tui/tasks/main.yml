@@ -1,0 +1,97 @@
+- name: Copy script
+  ansible.builtin.copy:
+    src: '{{ tui }}.py'
+    dest: /usr/local/bin/gcndemo
+    mode: preserve
+    notify:
+      - Restart
+
+- name: Add Debian Testing repo
+  ansible.builtin.deb822_repository:
+    name: debian-testing
+    architectures: arm64
+    install_python_debian: true
+    uris: http://deb.debian.org/debian/
+    signed_by: /usr/share/keyrings/debian-archive-keyring.pgp
+    suites: testing
+    components:
+      - main
+  register: tui_apt_sources
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: tui_apt_sources.changed
+
+- name: Set apt priorities
+  ansible.builtin.copy:
+    content: |
+      Package: *
+      Pin: release a=stable
+      Pin-Priority: 900
+
+      Package: *
+      Pin: release o=Debian
+      Pin-Priority: -10
+    mode: '644'
+    dest: /etc/apt/preferences.d/confluent-kafka-python.pref
+
+- name: Install apt dependencies from Debian testing
+  ansible.builtin.apt:
+    default_release: testing
+    name:
+      - python3-confluent-kafka
+
+- name: Install apt dependencies
+  ansible.builtin.apt:
+    name:
+      - python3-numpy
+      - python3-rich
+      - python3-typer
+
+- name: Get Kafka server IDs
+  ansible.builtin.set_fact:
+    tui_bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+- name: Create /usr/local/lib/systemd/system
+  ansible.builtin.file:
+    dest: /usr/local/lib/systemd/system
+    state: directory
+    mode: '755'
+
+- name: Auto-run demo program on /dev/tty1
+  ansible.builtin.copy:
+    content: |
+      [Unit]
+      Description=Start GCN Demo on tty1
+      After=getty.target
+      Conflicts=getty@tty1.service
+
+      [Service]
+      Type=exec
+      ExecStartPre=/usr/bin/setupcon
+      ExecStart=/usr/local/bin/gcndemo {{ tui_bootstrap_servers }} {% if kafka_topic is defined %}{{ kafka_topic }}{% endif %}
+
+      StandardInput=tty-force
+      StandardOutput=inherit
+      StandardError=journal
+      TTYReset=yes
+      TTYVHangup=yes
+      TTYVTDisallocate=yes
+      TTYPath=/dev/tty1
+      SendSIGHUP=yes
+
+      [Install]
+      WantedBy=multi-user.target
+    dest: /usr/local/lib/systemd/system/gcndemo.service
+    mode: '644'
+  register: tui_needs_daemon_reload
+  notify:
+    - Restart
+
+- name: Restart demo program
+  ansible.builtin.systemd_service:
+    name: gcndemo.service
+    daemon_reload: "{{ tui_needs_daemon_reload.changed }}"
+    enabled: true
+    state: restarted

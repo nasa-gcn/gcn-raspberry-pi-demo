@@ -7,7 +7,6 @@ from rich.text import Text
 import typer
 
 COLORS = ["red", "green", "blue"]
-symbols = "?NY"
 
 
 def main(
@@ -16,8 +15,10 @@ def main(
     admin = confluent_kafka.admin.AdminClient(
         {
             "bootstrap.servers": bootstrap_server,
-            "socket.timeout.ms": 1500,
-            "reconnect.backoff.max.ms": 2000,
+            "socket.timeout.ms": 500,
+            "reconnect.backoff.max.ms": 1000,
+            "topic.metadata.refresh.interval.ms": 500,
+            "metadata.max.age.ms": 1000,
         }
     )
 
@@ -27,15 +28,16 @@ def main(
         width=15,
         title="Brokers",
         title_justify="right",
-        caption="insync replicas",
+        caption="Topic in sync:\n[bold]L[/bold]eader, [bold]Y[/bold]es, [bold]N[/bold]o",
         caption_style="gray italic",
         title_style="bold",
         show_edge=False,
         pad_edge=False,
+        expand=True,
         collapse_padding=True,
-        box=box.SIMPLE_HEAD,
+        box=box.SIMPLE,
     )
-    table.add_column("Topic")
+    table.add_column("Topics")
     table.add_column("1")
     table.add_column("2")
     table.add_column("3")
@@ -49,13 +51,21 @@ def main(
                 COLORS, rows, admin.describe_topics(topic_collection).values()
             ):
                 try:
-                    isr = {isr.id for isr in future.result().partitions[0].isr}
+                    result = future.result()
                 except confluent_kafka.KafkaException:
                     for cell in row:
                         cell.plain = "?"
                 else:
+                    partition = result.partitions[0]
+                    leader = None if partition.leader is None else partition.leader.id
+                    isr = {isr.id for isr in partition.isr}
                     for i, cell in enumerate(row):
-                        cell.plain = "Y" if i + 1 in isr else "N"
+                        if i + 1 == leader:
+                            cell.plain = "L"
+                        elif i + 1 in isr:
+                            cell.plain = "Y"
+                        else:
+                            cell.plain = "N"
 
 
 if __name__ == "__main__":

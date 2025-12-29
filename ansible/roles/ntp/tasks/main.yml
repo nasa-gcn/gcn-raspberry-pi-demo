@@ -1,0 +1,13 @@
+- name: Install Chrony
+  ansible.builtin.apt:
+    name: chrony
+
+- name: Install Chrony config
+  ansible.builtin.copy:
+    content: |
+      server {{ ntp_host }} iburst
+      makestep 1 -1
+    dest: /etc/chrony/sources.d/local.sources
+    mode: '644'
+  notify:
+    - Restart

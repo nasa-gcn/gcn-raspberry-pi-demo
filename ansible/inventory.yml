@@ -5,11 +5,13 @@ pis:
 brokers:
   hosts:
     10.0.42.[1:3]:
-      pitft_rotate: 0
+      pitft_rotate: 2
+      tui: broker
 clients:
   hosts:
     10.0.42.[4:6]:
-      pitft_rotate: 2
+      pitft_rotate: 0
+      tui: client
     "10.0.42.4":
       kafka_topic: red
     "10.0.42.5":
@@ -19,3 +21,7 @@ clients:
 ntpd:
   hosts:
     "10.0.42.1":
+ntp:
+  hosts:
+    10.0.42.[2:6]:
+      ntp_host: '10.0.42.1'

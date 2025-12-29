@@ -1,17 +1,28 @@
 #!/usr/bin/env python
+from contextlib import contextmanager
 import json
 import threading
-from uuid import uuid4
-import signal
+import datetime
+import tty
+import termios
 import sys
 
 import confluent_kafka
 from rich.console import Console
-import gpiozero
-import randomname
+import numpy as np
 import typer
 
 COLORS = {"red", "green", "blue"}
+
+
+@contextmanager
+def terminal_raw_input(fd: int):
+    old = termios.tcgetattr(fd)
+    tty.setcbreak(fd)
+    try:
+        yield
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
 
 def main(
@@ -53,7 +64,7 @@ def main(
     consumer = confluent_kafka.Consumer(
         {
             "bootstrap.servers": bootstrap_server,
-            "group.id": str(uuid4()),
+            "group.id": color,
             "enable.auto.commit": False,
             "socket.timeout.ms": 1500,
             "stats_cb": stats,
@@ -73,16 +84,21 @@ def main(
     threading.Thread(target=consume, daemon=True).start()
 
     def produce():
-        value = "-" * 20
-        while len(value) > 10:
-            value = randomname.get_name()
+        date = datetime.datetime.now(datetime.UTC).strftime("%m/%d/%y %H:%M:%S.%f")[:-3]
+        ra = np.random.uniform(0, 360)
+        dec = 90 - np.rad2deg(np.arccos(np.random.uniform(-1, 1)))
+        ra_str = np.format_float_positional(ra, min_digits=3, precision=3, pad_left=3)
+        dec_str = np.format_float_positional(
+            dec, min_digits=3, precision=3, pad_left=3, sign=True
+        )
+        value = f"{ra_str}°{dec_str}°\n{date}"
         console.print(f"\n[{color} bold]SEND[not bold] {value}", end=None)
         producer.produce(color, value)
 
-    button = gpiozero.Button(21, bounce_time=0.001, hold_time=0.5, hold_repeat=True)
-    button.when_activated = button.when_held = produce
-
-    signal.pause()
+    with terminal_raw_input(sys.stdin.fileno()):
+        while True:
+            sys.stdin.read(1)
+            produce()
 
 
 if __name__ == "__main__":
