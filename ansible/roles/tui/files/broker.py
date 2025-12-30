@@ -27,14 +27,14 @@ def main(
 
     table = Table(
         title=f"Broker {broker_id}",
+        title_style="bold",
         show_edge=True,
         pad_edge=True,
-        expand=True,
         collapse_padding=True,
         box=box.DOUBLE_EDGE,
     )
-    table.add_column("Topic", width=4)
-    table.add_column("Status")
+    table.add_column("Topic", width=5)
+    table.add_column("Status", width=12)
     labels = [Text() for _ in COLORS]
     for topic, label in zip(COLORS, labels):
         table.add_row(f"[bold {topic}]{topic}", label)
