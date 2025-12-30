@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+import sys
+import termios
+import threading
+import tty
+from contextlib import contextmanager
+
 import confluent_kafka
 import confluent_kafka.admin
 import typer
@@ -7,6 +13,16 @@ from rich.table import Table, box
 from rich.text import Text
 
 COLORS = ["red", "green", "blue"]
+
+
+@contextmanager
+def terminal_raw_input(fd: int):
+    old = termios.tcgetattr(fd)
+    tty.setcbreak(fd)
+    try:
+        yield
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
 
 def main(
@@ -29,18 +45,29 @@ def main(
         title=f"Broker {broker_id}",
         title_style="bold",
         show_edge=True,
-        pad_edge=True,
+        pad_edge=False,
         collapse_padding=True,
         box=box.DOUBLE_EDGE,
     )
-    table.add_column("Topic", width=5)
-    table.add_column("Status", width=12)
+    table.add_column("Topic", width=4)
+    table.add_column("In Sync?", width=11)
     labels = [Text() for _ in COLORS]
     for topic, label in zip(COLORS, labels):
         table.add_row(f"[bold {topic}]{topic}", label)
 
+    running = True
+
+    def watch_keyboard():
+        nonlocal running
+        with terminal_raw_input(sys.stdin.fileno()):
+            while sys.stdin.read(1) != "q":
+                pass
+        running = False
+
+    threading.Thread(target=watch_keyboard, daemon=True).start()
+
     with Live(table):
-        while True:
+        while running:
             for topic, label, future in zip(
                 COLORS, labels, admin.describe_topics(topic_collection).values()
             ):
@@ -53,11 +80,11 @@ def main(
                     leader = None if partition.leader is None else partition.leader.id
                     isr = {isr.id for isr in partition.isr}
                     if leader == broker_id:
-                        label.plain = "leader"
+                        label.plain = "yes (leader)"
                     elif broker_id in isr:
-                        label.plain = "in sync"
+                        label.plain = "yes"
                     else:
-                        label.plain = "out of sync"
+                        label.plain = "no"
 
 
 if __name__ == "__main__":
