@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import confluent_kafka
 import confluent_kafka.admin
-from rich.table import box, Table
-from rich.live import Live
-from rich.text import Text
 import typer
+from rich.live import Live
+from rich.table import Table, box
+from rich.text import Text
 
 COLORS = ["red", "green", "blue"]
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-from contextlib import contextmanager
-import json
-import threading
 import datetime
-import tty
-import termios
+import json
 import sys
+import termios
+import threading
+import tty
+from contextlib import contextmanager
 
 import confluent_kafka
-from rich.console import Console
 import numpy as np
 import typer
+from rich.console import Console
 
 COLORS = {"red", "green", "blue"}
 
