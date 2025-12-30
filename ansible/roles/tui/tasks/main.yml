@@ -88,10 +88,3 @@
   register: tui_needs_daemon_reload
   notify:
     - Restart
-
-- name: Restart demo program
-  ansible.builtin.systemd_service:
-    name: gcndemo.service
-    daemon_reload: "{{ tui_needs_daemon_reload.changed }}"
-    enabled: true
-    state: restarted
