@@ -96,8 +96,7 @@ def main(
         producer.produce(color, value)
 
     with terminal_raw_input(sys.stdin.fileno()):
-        while True:
-            sys.stdin.read(1)
+        while sys.stdin.read(1) != "q":
             produce()
 
 
