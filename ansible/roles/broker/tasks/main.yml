@@ -1,9 +1,3 @@
-- name: Get Kafka server ID
-  ansible.builtin.set_fact:
-    broker_id: "{{ ansible_play_hosts_all.index(inventory_hostname) + 1 }}"
-    broker_bootstrap_servers: "{% for host in ansible_play_hosts_all %}{{ host }}:9092{% if not loop.last %},{% endif %}{% endfor %}"
-    broker_controller_quorom_voters: "{% for host in ansible_play_hosts_all %}{{ loop.index }}@{{ host }}:9093{% if not loop.last %},{% endif %}{% endfor %}"
-
 - name: Add Confluent Debian server repo
   ansible.builtin.deb822_repository:
     name: confluent-platform
@@ -47,11 +41,11 @@
     content: |
       node.id={{ broker_id }}
       process.roles=broker,controller
-      controller.quorum.voters={{ broker_controller_quorom_voters }}
+      controller.quorum.voters={% for host in groups.brokers %}{{ hostvars[host].broker_id }}@{{ host }}:9093{% if not loop.last %},{% endif %}{% endfor +%}
       controller.listener.names=CONTROLLER
       listeners=PLAINTEXT://{{ inventory_hostname }}:9092,CONTROLLER://{{ inventory_hostname }}:9093
       log.dirs=/var/lib/kafka
-      default.replication.factor={{ ansible_play_hosts_all | length }}
+      default.replication.factor={{ groups.brokers | length }}
       min.insync.replicas=2
       broker.session.timeout.ms = 500
       broker.heartbeat.interval.ms = 250
@@ -89,7 +83,7 @@
 
 - name: Create Kafka topics
   ansible.builtin.command:
-    cmd: kafka-topics --bootstrap-server {{ broker_bootstrap_servers }} --create --if-not-exists --topic {{ item }}
+    cmd: kafka-topics --bootstrap-server {{ inventory_hostname }}:9092 --create --if-not-exists --topic {{ item }}
     creates: /var/lib/kafka/{{ item }}-0
   loop:
     - red
