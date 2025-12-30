@@ -3,8 +3,8 @@
     src: '{{ tui }}.py'
     dest: /usr/local/bin/gcndemo
     mode: preserve
-    notify:
-      - Restart
+  notify:
+    - Restart
 
 - name: Add Debian Testing repo
   ansible.builtin.deb822_repository:
@@ -49,10 +49,6 @@
       - python3-rich
       - python3-typer
 
-- name: Get Kafka server IDs
-  ansible.builtin.set_fact:
-    tui_bootstrap_servers: "{% for host in groups['brokers'] %}{{ host }}{% if not loop.last %},{% endif %}{% endfor %}"
-
 - name: Create /usr/local/lib/systemd/system
   ansible.builtin.file:
     dest: /usr/local/lib/systemd/system
@@ -70,7 +66,7 @@
       [Service]
       Type=exec
       ExecStartPre=/usr/bin/setupcon
-      ExecStart=/usr/local/bin/gcndemo {{ tui_bootstrap_servers }} {% if kafka_topic is defined %}{{ kafka_topic }}{% endif %}
+      ExecStart=/usr/local/bin/gcndemo {{ groups.brokers | join(",") }} {% if kafka_topic is defined %}{{ kafka_topic }}{% endif %}
 
       StandardInput=tty-force
       StandardOutput=inherit
