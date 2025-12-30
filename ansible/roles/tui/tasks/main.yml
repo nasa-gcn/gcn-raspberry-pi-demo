@@ -55,6 +55,17 @@
     state: directory
     mode: '755'
 
+- name: Set console font
+  ansible.builtin.replace:
+    regexp: '{{ item.key }}=".*"'
+    replace: '{{ item.key }}="{{ item.value }}"'
+    dest: /etc/default/console-setup
+  loop:
+    - {key: FONTFACE, value: TerminusBold}
+    - {key: FONTSIZE, value: 14x28}
+  notify:
+    - Restart
+
 - name: Auto-run demo program on /dev/tty1
   ansible.builtin.copy:
     content: |

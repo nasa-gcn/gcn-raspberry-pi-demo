@@ -38,17 +38,6 @@
   notify:
     - Reboot
 
-- name: Set console font
-  ansible.builtin.replace:
-    regexp: '{{ item.key }}=".*"'
-    replace: '{{ item.key }}="{{ item.value }}"'
-    dest: /etc/default/console-setup
-  loop:
-    - {key: FONTFACE, value: TerminusBold}
-    - {key: FONTSIZE, value: 14x28}
-  notify:
-    - reboot
-
 - name: Check if we are already configured to boot to console
   ansible.builtin.command: systemctl get-default
   register: common_systemctl_default_target
