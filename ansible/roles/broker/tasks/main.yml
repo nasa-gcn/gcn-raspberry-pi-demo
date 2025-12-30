@@ -64,12 +64,6 @@
     dest: /etc/kafka/server.properties
     mode: '644'
 
-- name: Start confluent-kafka.service
-  ansible.builtin.systemd_service:
-    name: confluent-kafka.service
-    enabled: true
-    state: restarted
-
 - name: Format Kafka storage
   ansible.builtin.command:
     cmd: kafka-storage format -t foo -c /etc/kafka/server.properties
@@ -79,7 +73,7 @@
   ansible.builtin.systemd_service:
     name: confluent-kafka.service
     enabled: true
-    state: started
+    state: restarted
 
 - name: Create Kafka topics
   ansible.builtin.command:
