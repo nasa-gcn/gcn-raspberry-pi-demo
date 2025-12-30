@@ -65,8 +65,9 @@
 
       [Service]
       Type=exec
+      Restart=always
       ExecStartPre=/usr/bin/setupcon
-      ExecStart=/usr/local/bin/gcndemo {{ groups.brokers | join(",") }} {% if kafka_topic is defined %}{{ kafka_topic }}{% endif %}
+      ExecStart=/usr/local/bin/gcndemo {{ groups.brokers | join(",") }} {% if kafka_topic is defined %}{{ kafka_topic }}{% endif %} {% if broker_id is defined %}{{ broker_id }}{% endif %}
 
       StandardInput=tty-force
       StandardOutput=inherit

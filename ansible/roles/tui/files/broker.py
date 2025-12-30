@@ -11,6 +11,7 @@ COLORS = ["red", "green", "blue"]
 
 def main(
     bootstrap_server: str,
+    broker_id: int,
 ):
     admin = confluent_kafka.admin.AdminClient(
         {
@@ -25,47 +26,38 @@ def main(
     topic_collection = confluent_kafka.TopicCollection(COLORS)
 
     table = Table(
-        width=15,
-        title="Brokers",
-        title_justify="right",
-        caption="Topic in sync:\n[bold]L[/bold]eader, [bold]Y[/bold]es, [bold]N[/bold]o",
-        caption_style="gray italic",
-        title_style="bold",
-        show_edge=False,
-        pad_edge=False,
+        title=f"Broker {broker_id}",
+        show_edge=True,
+        pad_edge=True,
         expand=True,
         collapse_padding=True,
-        box=box.SIMPLE,
+        box=box.DOUBLE_EDGE,
     )
-    table.add_column("Topics")
-    table.add_column("1")
-    table.add_column("2")
-    table.add_column("3")
-    rows = [[Text() for _ in range(3)] for __ in range(3)]
-    for topic, row in zip(COLORS, rows):
-        table.add_row(f"[bold {topic}]{topic}", *row)
+    table.add_column("Topic", width=4)
+    table.add_column("Status")
+    labels = [Text() for _ in COLORS]
+    for topic, label in zip(COLORS, labels):
+        table.add_row(f"[bold {topic}]{topic}", label)
 
     with Live(table):
         while True:
-            for topic, row, future in zip(
-                COLORS, rows, admin.describe_topics(topic_collection).values()
+            for topic, label, future in zip(
+                COLORS, labels, admin.describe_topics(topic_collection).values()
             ):
                 try:
                     result = future.result()
                 except confluent_kafka.KafkaException:
-                    for cell in row:
-                        cell.plain = "?"
+                    label.plain = "unknown"
                 else:
                     partition = result.partitions[0]
                     leader = None if partition.leader is None else partition.leader.id
                     isr = {isr.id for isr in partition.isr}
-                    for i, cell in enumerate(row):
-                        if i + 1 == leader:
-                            cell.plain = "L"
-                        elif i + 1 in isr:
-                            cell.plain = "Y"
-                        else:
-                            cell.plain = "N"
+                    if leader == broker_id:
+                        label.plain = "leader"
+                    elif broker_id in isr:
+                        label.plain = "in sync"
+                    else:
+                        label.plain = "out of sync"
 
 
 if __name__ == "__main__":
