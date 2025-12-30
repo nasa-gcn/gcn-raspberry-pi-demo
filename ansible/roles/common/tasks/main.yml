@@ -22,9 +22,11 @@
     line: dtoverlay=gpio-key,gpio={{ item.pin }},keycode={{ item.key }}
     dest: /boot/firmware/config.txt
   loop:
+    # Key codes listed in https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
     - {pin: 17, key: 116}  # KEY_POWER
     - {pin: 22, key: 408}  # KEY_REBOOT
     - {pin: 16, key: 57}   # KEY_SPACE
+    - {pin: 23, key: 16}   # KEY_Q
   notify:
     - Reboot
 
