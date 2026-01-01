@@ -1,6 +1,6 @@
 # GCN Raspberry Pi Kafka Demo
 
-![Photograph of GCN Raspberry Pi Kafka Demo](photos/Kafka_Cluster_top_SED_7248.jpg)
+![Photograph of GCN Raspberry Pi Kafka Demo](photos/GCN_demo_SCI4353.jpg)
 
 This project is an educational, interactive demonstration of fault-tolerant [Apache Kafka](https://kafka.apache.org) data streaming technology as used in astronomy by NASA's [General Coordinates Network (GCN)](https://gcn.nasa.gov). It is made for exhibition the NASA booth at conferences and trade shows. It was first shown at the [243rd Meeting of the American Astronomical Society in New Orleans, LA, January 7-11, 2024](https://aas.org/meetings/aas243).
 
@@ -21,7 +21,7 @@ The visitor can interact with this demonstration in two ways:
 
 ## CAD Model
 
-The CAD model is available online in Autodesk Fusion 360 at https://a360.co/3TFbETm.
+The CAD model is available online in Autodesk Fusion 360 at https://a360.co/44joF9M.
 
 ## Bill of Materials
 
@@ -30,50 +30,64 @@ The CAD model is available online in Autodesk Fusion 360 at https://a360.co/3TFb
 |    | | **Electronic Components**
 | 6  | <img width="100" alt="product image" src="images/MFG_RASPBERRY-PI-4-MODEL-B-8G.jpg"/> | Single Board Computer - Raspberry Pi 4B 8 GB | DigiKey [2648-SC0195(9)-ND](https://www.digikey.com/en/products/detail/raspberry-pi/SC0195-9/12159401) |
 | 6  | <img width="100" alt="product image" src="images/1510828237_IMG_902579.jpg"/> | SanDisk 32GB Extreme UHS-I microSDHC Memory Card | B&H Photo [SAEMSD32A1G3](https://www.bhphotovideo.com/c/product/1455053-REG/sandisk_32gb_extreme_uhs_i_microsdhc.html) |
-| 6  | <img width="100" alt="product image" src="images/MFG_4484_primary.jpg"/> | LCD Display - Adafruit Mini PiTFT 1.3" | DigiKey [1528-4484-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/4484/11503310) |
+| 6  | <img width="100" alt="product image" src="images/2315.jpg"/> | LCD Display - Adafruit Mini PiTFT 1.3" | DigiKey [1528-1371-ND](https://www.digikey.com/en/products/detail/adafruit-industries-llc/2315/5629419) |
+| 24 | <img width="100" alt="product image" src="images/MFG_INC6312-TSW-101-08-T-S-RA_web(640x640).jpg" /> |  Right-Angle Thru-Hole 0.1" Pitch Pin Header | DigiKey [SAM1051-01-ND](https://www.digikey.com/en/products/detail/samtec-inc/TSW-101-08-T-S-RA/1102423) |
 | 1  | <img width="100" alt="product image" src="images/MFG_SW-008.jpg"/> | 8-Port Ethernet Switch - Brainboxes SW-008 | DigiKey [2265-SW-008-ND](https://www.digikey.com/en/products/detail/brainboxes/SW-008/21574710) |
+| 1  | <img width="100" alt="product image" src="images/MFG_TXN150-124_web(640x640).jpg" /> | AC/DC Convert 5V 150W - Traco Power TXN 150-105 | DigiKey [1951-TXN150-105-ND](https://www.digikey.com/en/products/detail/traco-power/TXN-150-105/26284179) |
+| 1  | <img width="100" alt="product image" src="images/6162.0159.JPG" /> | IEC 60320 C14 Power Entry Module | DigiKey [486-1649-ND](https://www.digikey.com/en/products/detail/schurter-inc/6162-0159/2646985) |
+| 1  | <img width="100" alt="product image" src="images/MFG_11-00015.jpg" /> | IEC 60320 C13 Power Cable | DigiKey [839-11-00015-ND](https://www.digikey.com/en/products/detail/tensility-international-corp/11-00015/3900572) |
 | 6  | <img width="100" alt="product image" src="images/R5ABLKREDIF0.jpg"/> | DPST On/Off Rocker Switch | DigiKey [EG5600-ND](https://www.digikey.com/en/products/detail/e-switch/R5ABLKREDIF0/1805312) |
 | 1  | <img width="100" alt="product image" src="images/MFG_COM-09336.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Red | DigiKey [1568-1476-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09336/6047815) |
 | 1  | <img width="100" alt="product image" src="images/MFG_COM-09341.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Green | DigiKey [1568-1481-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09341/6047820) |
 | 1  | <img width="100" alt="product image" src="images/MFG_COM-09337.jpg"/> | Arcade Style SPDT Momentary Pushbutton - Blue | DigiKey [1568-1477-ND](https://www.digikey.com/en/products/detail/sparkfun-electronics/COM-09337/6047816) |
-| 6  | <img width="100" alt="product image" src="images/MFG_3021108-01M.jpg.png"/> | USB-A Male to USB-C Male Right Angle Cable | DigiKey [189-3021108-01M-ND](https://www.digikey.com/en/products/detail/qualtek/3021108-01M/13181646) |
-| 1  | <img width="100" alt="product image" src="images/MFG_SWI5-N.JPG"/> | DC 5V 5W Power Adapter | DigiKey [102-4120-ND](https://www.digikey.com/en/products/detail/cui-inc/SWI5-5-N-P5/6579910) |
-| 18 | <img width="100" alt="product image" src="images/19003-0071.jpg"/> | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
-| 12 | <img width="100" alt="product image" src="images/MFG_VDV826-704.jpg"/> | RJ45 8P8C Ethernet Plug | DigiKey [1742-VDV826-704-ND](https://www.digikey.com/en/products/detail/klein-tools-inc/VDV826-704/14636893) |
-| 1  | <img width="100" alt="product image" src="images/A2123113_TD01_V1_49af9ef5-f54f-45e2-a89f-2c85bd30d60b.jpg"/> | Anker 360 Charger (60W) | Anker [A2123](https://www.anker.com/products/a2123) |
-| -  | | Spool of Cat5 cable | |
-| -  | | 24 AWG Insulated Wire | |
-| -  | | Female Breadboard Pin Headers | |
-|    | | **Spacers**
-| 24 | <img width="100" alt="product image" src="images/971060154.jpg"/> | Brass Spacer M2.5 x 6mm+6mm<span style="color: red">\*</span> | DigiKey [732-12901-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971060154/9488605) |
-| 6  | <img width="100" alt="product image" src="images/971100154.JPG"/> | Brass Spacer M2.5 x 10mm+6mm<span style="color: red">\*</span> | DigiKey [732-12917-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971100154/9488621) |
-| 18 | <img width="100" alt="product image" src="images/MFG_WA-SSTIE.jpg"/> | Brass Spacer M2.5 x 20mm+6mm<span style="color: red">\*</span> | DigiKey [732-12949-ND](https://www.digikey.com/en/products/detail/würth-elektronik/971200154/9488653) |
-|    | | **Fasteners**
-| 24 | <img width="100" alt="product image" src="images/91828A316p1-b01-digitall@1x_636713274946590000.png"/> | M2.5 Hex Nut<span style="color: red">\*</span> | McMaster [91828A113](https://www.mcmaster.com/catalog/91828A113) |
-| 4  | <img width="100" alt="product image" src="images/92010A020p1-b01-digitall@4x_636620966298133155.png"/> | M2.5 x 10mm Phillips Flat Head Bolt | McMaster [92010A020](https://www.mcmaster.com/catalog/92010A020) |
-| 6  | <img width="100" alt="product image" src="images/92000A104_39519c89-b963-4c0e-993c-fba4c890e7e0@4x_638052503212661798.png"/> | M2.5 x 6mm Phillips Pan Head Bolt | McMaster [92000A104](https://www.mcmaster.com/catalog/92000A104) |
-| 18 | <img width="100" alt="product image" src="images/92000A105_b22b3fe5-93b5-49ac-9b91-70656ee74217@4x_638052505619789066.png"/> | M2.5 x 8mm Phillips Pan Head Bolt | McMaster [92000A105](https://www.mcmaster.com/catalog/92000A105) |
-| 4  | <img width="100" alt="product image" src="images/92000A155_ebb9151e-fdac-412c-9a86-4338aaa7b141@4x_638052509290149428.png"/> | M3.5 x 10mm Phillips Pan Head Bolt | McMaster [92000A155](https://www.mcmaster.com/catalog/92000A155) |
-| 4  | <img width="100" alt="product image" src="images/91828A220p1-b01-digitall@2x_636713274944370000.png"/> | M3.5 Hex Nut | McMaster [91828A220](https://www.mcmaster.com/catalog/91828A220) |
-| 24 | <img width="100" alt="product image" src="images/92148A070_19a3daac-6bd5-43dd-a8bd-41058ab6b336@4x_1695312244.png"/> | M2.5 Lock Washer | McMaster [92148A070](https://www.mcmaster.com/catalog/92148A070) | |
-|    | | **Machined Parts**
-| 1  | <img width="100" alt="product image" src="images/Board v2.png"/> | Aluminum Project Board | Fusion 360 [CAD model](https://a360.co/41hcmYX) |
-| 4  | <img width="100" alt="product image" src="images/Foot v4.png"/> | Aluminum Project Board Foot | Fusion 360 [CAD model](https://a360.co/48mfR2I) |
-| 6  | <img width="100" alt="product image" src="images/Cover v4.png"/> | Transparent Acrylic Raspberry Pi Cover | Fusion 360 [CAD model](https://a360.co/3GTA6J0) |
+| 12 | <img width="100" alt="product image" src="images/19003-0071.jpg"/> | Insulated Female Quick Connector 24-26 AWG | DigiKey [WM18235-ND](https://www.digikey.com/en/products/detail/molex/0190030071/279036) |
+| 1  | <img width="100" alt="product image" src="images/MFG_CM-100291RDBSTK.jpg"/> | 1.5' Super-Slim Ethernet Cable, Red | DigiKey [2671-CM-100291RDBSTK-ND](https://www.digikey.com/en/products/detail/coolgear/CM-100291RDBSTK/16751909) |
+| 1  | <img width="100" alt="product image" src="images/MFG_CM-100291GNBSTK.jpg"/> | 1.5' Super-Slim Ethernet Cable, Green | DigiKey [2671-CM-100291GNBSTK-ND](https://www.digikey.com/en/products/detail/coolgear/CM-100291GNBSTK/16752428) |
+| 1  | <img width="100" alt="product image" src="images/MFG_CM-100291BLBSTK.webp"/> | 1.5' Super-Slim Ethernet Cable, Blue | DigiKey [2671-CM-100291BLBSTK-ND](https://www.digikey.com/en/products/detail/coolgear/CM-100291BLBSTK/16751644) |
+| 3  | <img width="100" alt="product image" src="images/MFG_CM-100291GYBSTK.jpg"/> | 1.5' Super-Slim Ethernet Cable, Gray | DigiKey [2671-CM-100291GYBSTK-ND](https://www.digikey.com/en/products/detail/coolgear/CM-100291GYBSTK/16751641) |
+| 50' | <img width="100" alt="product image" src="images/MFG_30-0041(5,7,8,9).jpg"/> | 2-Conductor Red/Black 22AWG Insulated Wire | DigiKey [839-30-00417-DS-ND](https://www.digikey.com/en/products/detail/tensility-international-corp/30-00417/24671209) |
+| 50' | <img width="100" alt="product image" src="images/MFG_30-03176.jpg"/> | 2-Conductor White/Black 22AWG Insulated Wire | DigiKey [839-30-03176-DS-ND](https://www.digikey.com/en/products/detail/tensility-international-corp/30-03176/21769218) |
+| 10' | <img width="100" alt="product image" src="images/MFG_SJOOW1403-50.jpg.png" /> | 3-Conductor White/Black/Green 18AWG Insulated Wire | DigiKey [2328-SOOW1803-10-ND](https://www.digikey.com/en/products/detail/remington-industries/SOOW1803-10/14318126) |
+| 50' | <img width="100" alt="product image" src="images/MFG_HOOKUPSTRANDEDWHITE_web(640x640).jpg" /> | 1-Conductor 24AWG Insulated Wire | DigiKey [1332-24-1-0500-002-1-S](https://www.digikey.com/en/products/detail/cnc-tech/1332-24-1-0500-002-1-S/26737551) |
+| 1  | <img width="100" alt="product image" src="images/2702.jpg" /> | Bus bar terminal block - Blue Sea Systems DualBus 100A BusBar - 10 Circuit | Manufacturer [product page](https://www.bluesea.com/products/2702/DualBus_100A_BusBar_-_10_Circuit) |
+|    | | **Fasteners - Steel**
+| 24 | | M2.5 12mm pan head Phillips screw - steel |
+| 24 | | M2.5 lock washer - steel |
+| 2  | | M3 14mm countersunk Phillips screw - steel |
+| 4  | | M3 16mm pan head Phillips screw - steel |
+| 6  | | M3 hex nut - steel |
+| 6  | | M3 lock washer - steel |
+| 4  | | M4 12mm pan head Phillips screw - steel |
+| 4  | | M4 14mm pan head Phillips screw - steel |
+| 4  | | M4 hex nut - steel |
+| 4  | | M4 lock washer - steel |
+| 2  | | #8-36 pan head Phillips screw - steel |
+| 2  | | #8-36 hex nut - steel |
+|    | | **Fasteners - Nylon**
+| 12 | | M2.5 6mm pan head Phillips screw - nylon[^1] |
+| 12 | | M2.5 hex nut - nylon[^1] |
+| 12 | | M2.5 12mm female-female hex standoff - nylon[^1] |
+| 36 | | M2.5 6mm male-female hex standoff - nylon[^1] |
+|    | | **Machined Parts - 6mm Birch Plywood**
+| 1  | <img width="100" alt="product image" src="images/Chassis Top.png"/> | Chassis Top | see CAD model |
+| 1  | <img width="100" alt="product image" src="images/Chassis Bottom.png"/> | Chassis Bottom | see CAD model |
+| 1  | <img width="100" alt="product image" src="images/Chassis Front.png"/> | Chassis Front | see CAD model |
+| 1  | <img width="100" alt="product image" src="images/Chassis Back.png"/> | Chassis Back | see CAD model |
+| 2  | <img width="100" alt="product image" src="images/Chassis Left-Right.png"/> | Chassis Left/Right | see CAD model |
+| 2  | <img width="100" alt="product image" src="images/Chassis Middle Support.png"/> | Chassis Middle Support | see CAD model |
+|    | | **Machined Parts - 3mm Clear Acrylic**
+| 1  | <img width="100" alt="product image" src="images/Artwork Cover.png"/> | Artwork Cover | see CAD model |
+| 6  | <img width="100" alt="product image" src="images/Static Cover Top.png"/> | Static Cover Top | see CAD model |
+| 6  | <img width="100" alt="product image" src="images/Static Cover Left.png"/> | Static Cover Left | see CAD model |
+| 6  | <img width="100" alt="product image" src="images/Static Cover Right.png"/> | Static Cover Right | see CAD model |
+| 12  | <img width="100" alt="product image" src="images/Static Cover Front-Back.png"/> | Static Cover Front/Back | see CAD model |
 |    | | **Miscellaneous**
 | 1  | <img width="100" alt="product image" src="images/pelican-vault-v525-foam-camera-case.jpg"/> | Pelican V525 Vault Rolling Case | Manufacturer [product page](https://www.pelican.com/us/en/product/cases/rolling-case/vault/v525)
+| 1  | <img width="100" alt="product image" src="images/714rYLzUKSL._AC_SX522_.jpg" /> | Weld-On 3 Acrylic Plastic Cement with Applicator Bottle | Amazon [product page](https://a.co/d/g46TBD8) |
+| 1  | <img width="100" alt="product image" src="images/320161382_S01.spin.jpeg" /> | All Purpose Flat Black Spray Paint | Home Depot [product page](https://www.homedepot.com/p/HDX-10-oz-All-Purpose-Flat-Black-Spray-Paint-AF79705UF) |
+|    | | Wood glue |
 
-<span style="color: red">\*</span> Rather than ordering these items individually, it is more cost-effective to purchase Qty. 3 [M2.5 Spacer Kit](https://www.amazon.com/dp/B01L06CUJG) available from Amazon.
-
-## Assembly Notes
-
-### Power Supply for SW-008 Ethernet Switch
-
-The Brainboxes SW-008 Ethernet switch has a terminal block plug. To connect the DC 5V 5W power adapter to the Ethernet switch:
-
-1. Snip off the adapter's barrel connector. Separate a few centimeters of the wire and strip a few mm of insulation.
-2. Identify the ground and +5V wires of the power adapter using a multimeter.
-3. Consult the wiring diagram on the [data sheet for the SW-008](https://www.brainboxes.com/files/catalog/product/SW/SW-008/documents/SW-008-datasheet.pdf). Note that the power adapter has two conductors but the SW-008 terminal block has three conductors. Insert the power adapter's ground wire into the terminal block's -V receptacle and the +5V wire into the +V receptacle. Connect the terminal block's -V and Functional Earth receptacles with a jumper wire.
+[^1]: Rather than ordering these items individually, it is more cost-effective to purchase Qty. 2 [Black Nylon Machine Screw and Stand-off Set – M2.5 Thread](https://www.adafruit.com/product/3299) available from Adafruit.
 
 # Setup
 
@@ -83,25 +97,23 @@ Follow these instructions for _N_ = 1 to 6 to prepare each of the 6 Raspberry Pi
 
 1. Download, install, and launch the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) application.
 
-2. Mount a microSD card.
+2. In the Raspberry Pi Imager application, on the `Device` page, select `Raspberry Pi 4` and click `Next`.
 
-3. In the Raspberry Pi Imager application, select the device `Raspberry Pi 4` and the OS `Raspberry Pi OS (64-bit)`.
+3. On the `OS` page, select `Raspberry Pi OS (64-bit)` and click `Next`.
 
-4. Click `Next` and choose `Edit Settings`.
+4. In the `Customization` section...
 
-    a. Under the `General` tab, check `Set hostname`. Set the hostname to <code>gcndemo<i>N</i></code> where _N_ is an integer.
+    a. On the `Hostname` page, enter <code>gcndemo<i>N</i></code> where _N_ is an integer.
 
-    b. Check `Set username and password`. Set the username to `gcndemo`; choose (and save in a secure location) a random password.
+    b. On the `Localization` page, enter your city, time zone, and keyboard layout.
 
-    c. Check `Configure wireless LAN` and enter the name and password for the WiFi network that the Raspberry Pis will use to connect to the Internet to download software. Set `Wireless LAN country` to `US`.
+    c. On the `User` page, set the username to `gcndemo`; choose (and save in a secure location) a random password.
 
-    d. Check `Set locale settings` and configure the time zone and keyboard layout.
+    d. On the `Wi-Fi` page, configure the WiFi network that you will use while installing software on the Raspberry Pis. You can optionally skip this step and later connect a keybaord and monitor to the Raspberry Pi temporarily to set the WiFi network on the desktop.
 
-    e. Under the `Services` tab, check `Enable SSH`. Check `Allow public-key authentication only` and select your authorized keys.
+    e. On the `Remote access` page, make sure that `Enable SSH` and `Use public key authentication` are selected, and enter your SSH public key.
 
-    f. Under the `Options` tab, uncheck `Eject media when finished`.
-
-    f. Click `Save`.
+    f. On the `Raspberry Pi Connect` page, make sure that `Enable Raspberry Pi Connect` is turned off.
 
 5. Click `Write`.
 
@@ -121,19 +133,23 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
         git clone https://github.com/nasa-gcn/gcn-raspberry-pi-demo
 
-3. Install Ansible on your workstation by running the command:
+3. Change to the `ansible` directory in the repository:
+
+        cd gcn-raspberry-pi-demo/ansible
+
+4. Install Ansible on your workstation by running the command:
 
         pip install ansible
 
-4. Run each of our playbooks in the following order:
+5. Run the Ansible playbook:
 
-        ansible-playbook -i inventory.yml playbooks/disable-bluetooth.yml
-        ansible-playbook -i inventory.yml playbooks/ntp.yml
-        ansible-playbook -i inventory.yml playbooks/pitft.yml
-        ansible-playbook -i inventory.yml playbooks/reboot.yml
-        ansible-playbook -i inventory.yml playbooks/setup.yml
-        ansible-playbook -i inventory.yml playbooks/clients.yml
-        ansible-playbook -i inventory.yml playbooks/pitft_buttons.yml
+        ansible-playbook main.yml
+
+   This will cause the Raspberry Pis to reboot once or more.
+
+6. (Optional, recommended) Set the Raspberry Pis to mount the microSD card as read-only and overlay a temporary filesystem over top. This will decrease wear on the microSD cards and make it safe to cut the power without first shutting down the Raspberry Pis.
+
+        ansible-playbook overlayfs_enable.yml
 
 # Operation
 
@@ -141,25 +157,38 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
 1. Ensure that all rocker switches are in the "On" position.
 
-2. Connect the power cable for the Ethernet switch to a wall outlet.
+2. Connect the power cable.
 
-3. Connect the power cable for the USB hub to a wall outlet.
+3. Wait until all of the Raspberry Pis have booted and started their display programs. It may take a few minutes before Kafka messages flow properly.
+
+## Pinhole Troubleshooting Buttons
+
+There are four small buttons on the PiTFT display hats, labeled `#17`, `#22`, `#23`, and `#27`, that have been mapped to troubleshooting functions for exhibit staff. To press them, reach through the pinholes in the clear acrylic display cases using a paperclip. The buttons are mapped to the following functions:
+
+| Button | Function |
+| - | - |
+| `#17` | Shut down the Raspberry Pi |
+| `#22` | Reboot the Raspberry Pi |
+| `#23` | Restart the display program |
+
+Note that some of the Raspberry Pis are rotated 180° relative to the others, so make sure to pay attention to the button labels and not their positions.
+
+<img height="180" alt="Right-side up Raspberry Pi detail" src="photos/pinhole-buttons-right-side-up-detail.jpg" />
+<img height="180" alt="Upside-down up Raspberry Pi detail" src="photos/pinhole-buttons-upside-down-detail.jpg" />
 
 ## Shutdown
 
-1. For each Raspberry Pi, carefully reach under its transparent acrylic cover with an insulating object and press and hold for five seconds the _uppermost_ of the two buttons on the Mini PiTFT.
+1. Make sure that all of the rocker switches are in the "On" position.
 
-2. What until the Mini PiTFT displays the message, `It is now safe to turn off your computer.`
+2. For each Raspberry Pi, press the  `#17` pinhole button.
 
-3. Unplug the power supplies for the USB power hub and the Ethernet switch.
+3. What until the link lights on all of the Raspberry Pi's Ethernet ports, and on the Ethernet switch, go dark.
+
+4. Unplug the power cable.
+
+If you have configured the microSD cards to be read-only (see [To configure our demo software on the Raspberry Pis](#to-configure-our-demo-software-on-the-raspberry-pis)), then you can safely skip steps 1-3.
 
 ## Troubleshooting
-
-### The interactive display has frozen.
-
-When Raspberry Pi OS is shut down and power is still suplied to the Raspberry Pi, the Mini PiTFT display will show the last image that was sent to it. If the green ACT light in the corner of the Raspberry Pi is off _and_ the link lights on the Raspberry Pi's Ethernet port are off, then Raspebrry Pi OS is halted. If this is the case, then unplug and re-plug the power to the Raspberry Pi to restart it.
-
-If Raspberry Pi is on and the display is frozen, then you can restart the program that drives the display. To do this, carefully reach under the Raspberry Pi's cover with an insulating object and press the _uppermost_ of the two buttons on the Mini PiTFT to restart the display program.
 
 ### How do I see diagnostic messages from the Kafka client programs?
 
@@ -178,11 +207,3 @@ The Kafka client prints many useful diagnostic messages when it obtains or loses
    (Note that if you cut off that Raspberry Pi's network connection, then the
    live display will stop, but it should resume and fill in everything that you
    have missed as soon as you restore the connection.)
-
-# Lessons learned
-
-1. We built the chassis by CNC-machining a sheet of aluminum because our machine shop is most suited for precision machining of metals and plastics for spacecraft parts. However, next time it might be cheaper and faster to build it out of plywood if we can get access to a laser cutting machine or a CNC wood router.
-
-2. We added the artwork to the chassis by printing on paper, gluing the paper to the aluminum with spray adhesive, and cutting out the pockets and holes with a hobby knife. It might be less labor-intensive and result in a more durable finish if we instead printed it on a vinyl plotter/cutter and adhered it to the chassis using heat transfer.
-
-3. It was difficult to get accurate dimensions for the right-angle USB power connectors. As a result, they just barely fit through the holes that we made for them in the chassis, and each connector butts up against the adjacent Raspberry Pi's PCB.

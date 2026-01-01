@@ -1,0 +1,8 @@
+- name: Make boot volume read-write
+  become: true
+  hosts: all
+  tasks:
+    - name: Run raspi-config
+      ansible.builtin.command: raspi-config nonint do_overlayfs 1
+    - name: Reboot
+      ansible.builtin.reboot:
