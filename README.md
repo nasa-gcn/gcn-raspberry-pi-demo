@@ -19,9 +19,13 @@ The visitor can interact with this demonstration in two ways:
 
 # Construction
 
-## CAD Model
+## CAD Models
 
-The CAD model is available online in Autodesk Fusion 360 at https://a360.co/44joF9M.
+CAD models are available online in Autodesk Fusion:
+
+- [GCN Kafka Demo v3](https://a360.co/44joF9M): 3D assembly
+- [Plywood Sheet 1](https://a360.co/3MExCV4), [Plywood Sheet 2](https://a360.co/4pGtwL2), [Acrylic Sheet](https://a360.co/4rJitBY): laser cutter patterns with kerf compensation
+- [Assembly Instructions](https://a360.co/3YQ5X6n)]: Mechanical drawings for artwork design reference and order of assembly
 
 ## Bill of Materials
 
@@ -117,7 +121,7 @@ Follow these instructions for _N_ = 1 to 6 to prepare each of the 6 Raspberry Pi
 
 5. Click `Write`.
 
-6. After Raspberry Pi Imager has finished writing, the microSD card should appear on your computer as a disk called `BOOT`. Inside this disk, edit the file called `cmdline.txt`. Add the following code to the beginning of the first line of that file: <code>ip=10.0.42.<i>N</i>::255.255.255.0::eth0</code>, where _N_ is the number of the device.
+6. After Raspberry Pi Imager has finished writing, remove and re-insert the microSD card. It should appear on your desktop as a disk called `bootfs`. Inside this disk, edit the file called `cmdline.txt`. Add the following code to the beginning of the first line of that file: <code>ip=10.0.42.<i>N</i>::255.255.255.0::eth0</code>, where _N_ is the number of the device.
 
 7. Unmount and remove the microSD card from your computer.
 
