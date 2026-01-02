@@ -1,0 +1,14 @@
+- name: Disable WiFi
+  become: true
+  hosts: all
+  tasks:
+    - name: Add overlay
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: dtoverlay=disable-wifi
+        dest: /boot/firmware/config.txt
+      notify:
+        - Reboot
+  handlers:
+    - name: Reboot
+      ansible.builtin.reboot:
