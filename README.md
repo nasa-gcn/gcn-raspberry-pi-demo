@@ -127,6 +127,25 @@ Follow these instructions for _N_ = 1 to 6 to prepare each of the 6 Raspberry Pi
 
 8. Insert the microSD card into the Raspberry Pi.
 
+## Configure SSH connection with workstation
+
+The following instructions apply only to **Mac OS**:
+
+1. Go to Settings --> Network --> WIFI
+2. Click <code>Belkin USB-C LAN</code> (this option will only appear if valid wired connection between workstation and ethernet switch)
+3. Click <code>Details</code> and go to <code>TCP/IP</code> tab
+4. Change <code>Configure IPv4</code> option to <code>Manually</code>
+5. Change <code>IP Address</code> to <code>10.0.42.<i>N</i></code>, where N is any integer NOT between 1-6 (including bounds)
+6. Change <code>Subnet Mask</code> to same subnet mask as the Raspberry Pis: <code>255.255.255.0</code>
+7. Click <code>OK</code> to save
+
+Complete the following steps for each individual Pi
+
+8. Boot the Pi
+9. Connect individually with SSH command to the Pi with respective IP Address
+10. Accept warning message about unknown SSH fingerprint (only applicable on first attempt)
+11. Repeat for all Pis
+
 ## To configure our demo software on the Raspberry Pis
 
 We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of the Raspberry Pis.
