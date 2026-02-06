@@ -151,9 +151,13 @@ We use [Ansible](https://docs.ansible.com) to automate the rest of the setup of 
 
    This will cause the Raspberry Pis to reboot once or more.
 
-6. (Optional, recommended) Set the Raspberry Pis to mount the microSD card as read-only and overlay a temporary filesystem over top. This will decrease wear on the microSD cards and make it safe to cut the power without first shutting down the Raspberry Pis.
+6. (Optional, recommended) Set the Raspberry Pis for field deployment: make the filesystem read-only to reduce microSD card wear, disable WiFi, and decrease CPU frequency.
 
-        ansible-playbook overlayfs_enable.yml
+        ansible-playbook field_mode.yml
+
+   To undo these changes at any point, run this command:
+
+        ansible-playbook lab_mode.yml
 
 # Operation
 

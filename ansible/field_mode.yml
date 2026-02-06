@@ -1,0 +1,19 @@
+- name: Prepare for field use
+  become: true
+  hosts: all
+  tasks:
+    - name: Disable wifi
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: dtoverlay=disable-wifi
+        dest: /boot/firmware/config.txt
+    - name: Disable enhanced turbo
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        regexp: ^arm_boost=
+        line: arm_boost=0
+        dest: /boot/firmware/config.txt
+    - name: Make SD card read-only
+      ansible.builtin.command: raspi-config nonint do_overlayfs 0
+    - name: Reboot
+      ansible.builtin.reboot:

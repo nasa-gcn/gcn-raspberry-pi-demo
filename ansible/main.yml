@@ -1,15 +1,15 @@
+- name: Configure brokers
+  become: true
+  hosts: brokers
+  roles:
+    - broker
+
 - name: Configure all hosts
   become: true
   hosts: all
   roles:
     - common
     - tui
-
-- name: Configure brokers
-  become: true
-  hosts: brokers
-  roles:
-    - broker
 
 - name: Configure NTP server
   become: true

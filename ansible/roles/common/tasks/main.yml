@@ -46,7 +46,6 @@
 - name: Boot to console
   ansible.builtin.command:
     cmd: raspi-config nonint do_boot_behaviour B2
-    creates: /etc/systemd/system/getty@tty1.service.d/autologin.conf
   notify:
     - Reboot
   when: common_systemctl_default_target.stdout != 'multi-user.target'

@@ -1,0 +1,22 @@
+- name: Prepare for lab use
+  become: true
+  hosts: all
+  tasks:
+    - name: Make SD card read-write
+      ansible.builtin.command: raspi-config nonint do_overlayfs 1
+    - name: Reboot
+      ansible.builtin.reboot:
+    - name: Enable wifi
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        line: dtoverlay=disable-wifi
+        dest: /boot/firmware/config.txt
+        state: absent
+    - name: Enable enhanced turbo
+      ansible.builtin.lineinfile:
+        insertafter: \[all\]
+        regexp: ^arm_boost=
+        line: arm_boost=1
+        dest: /boot/firmware/config.txt
+    - name: Reboot
+      ansible.builtin.reboot:
